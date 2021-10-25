@@ -1,0 +1,170 @@
+@charset 'UTF-8';
+
+.conteudo-presell{
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px;
+    line-height: 1.5;
+}
+
+.conteudo-presell .titulo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.conteudo-presell .titulo h2{
+    font-size: 2.8em;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.conteudo-presell .titulo a{
+    font-size: 3em;
+    background: #27B940;
+    color: #FFF;
+    text-align: center;
+    display: inline;
+    text-transform: uppercase;
+    font-weight: bolder;
+    padding: 5px 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 5px;
+}
+
+.conteudo-presell .headline-1{
+    width: 100%;
+    max-width: 800px;
+    margin-top: 60px;
+}
+
+.conteudo-presell .headline-1 p{
+    font-size: 1.5em;
+    color: #6D6D6D;
+    line-height: 1.2;
+}
+
+.conteudo-presell .image-presell{
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.conteudo-presell .image-presell img{
+    width: 100%;
+}
+
+.conteudo-presell .headline-2{
+    width: 100%;
+    max-width: 800px;
+    border: 3px dashed rgb(255, 0, 0);
+    padding: 10px;
+    text-align: center;
+}
+
+.conteudo-presell .headline-2 p{
+    font-size: 1.5em;
+    line-height: 1.2;
+}
+
+.conteudo-presell .headline-2 strong{
+    color: rgb(255, 0, 0);
+}
+
+.conteudo-presell .btn-artigo{
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.conteudo-presell .btn-artigo a{
+    width: 100%;
+    background: #27B940;
+    border-radius: 5px;
+    padding: 15px;
+    color: #FFF;
+    font-size: 2.5em;
+    text-align: center;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.conteudo-presell .lista-prsell{
+    width: 100%;
+    max-width: 800px;
+    margin-top: 40px;
+}
+
+.conteudo-presell .lista-prsell h3{
+    font-size: 1.5em;
+    line-height: 1.2;
+}
+
+.conteudo-presell .lista-prsell ul{
+    width: 90%;
+    max-width: 500px;
+    margin: 30px auto 0;
+    list-style: none;
+}
+
+.conteudo-presell .lista-prsell ul li{
+    font-size: 1.4em;
+    color: #6D6D6D;
+    border-bottom: 1px solid #D1D1D1;
+    line-height: 2;
+}
+
+@media only screen and (max-width: 650px){
+    .conteudo-presell .titulo h2{
+        font-size: 2em;
+    }
+    .conteudo-presell .titulo a{
+        font-size: 2.3em;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .conteudo-presell .titulo h2{
+        font-size: 1.8em;
+    }
+    .conteudo-presell .titulo a{
+        font-size: 2em;
+    }
+    .conteudo-presell .headline-1 p, 
+    .conteudo-presell .headline-2 p, 
+    .conteudo-presell .lista-prsell h3{
+        font-size: 1.1em;
+    }
+    .conteudo-presell .lista-prsell ul li{
+        font-size: 1em;
+    }
+    .conteudo-presell .btn-artigo a{
+        padding: 10px;
+        font-size: 2.2em;
+    }
+}
+
+@media only screen and (max-width: 345px){
+    .conteudo-presell .btn-artigo a{
+        font-size: 1.9em;
+    }
+}
+@media only screen and (max-width: 300px){
+    .conteudo-presell .btn-artigo a{
+        font-size: 1.7em;
+    }
+    .conteudo-presell .titulo h2 {
+        font-size: 1.7em;
+    }
+}
