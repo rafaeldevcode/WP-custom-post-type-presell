@@ -24,7 +24,7 @@
                 'headline_1' => 'Parabéns, está a um passo de solicitar o cartão que mais aprova, com inúmeras vantagens e fácil aprovação.',
                 'atencao' => 'ATENÇÃO:',
                 'headline_2' => 'Restam poucas unidades, solicite imediatamente!',
-                'texto_botao' => 'ver catão',
+                'texto_botao' => 'ver cartão',
             ),
             'Empréstimo' => array(
                 'subtitulo' => 'aprovado',
