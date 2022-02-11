@@ -3,12 +3,12 @@
 .conteudo-presell{
     width: 100%;
     max-width: 800px;
-    margin: auto;
+    margin: 10px auto 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 30px 10px;
+    padding: 0 10px;
     line-height: 1.5;
 }
 
@@ -21,22 +21,22 @@
 }
 
 .conteudo-presell .titulo h2{
-    font-size: 2.8em;
+    font-size: 2.5em;
     font-weight: bolder;
     text-align: center;
 }
 
 .conteudo-presell .titulo a{
-    font-size: 3em;
+    font-size: 2.5em;
     background: #27B940;
     color: #FFF;
     text-align: center;
     display: inline;
     text-transform: uppercase;
     font-weight: bolder;
-    padding: 5px 30px;
-    width: 100%;
-    max-width: 400px;
+    padding: 0px 30px;
+    width: auto;
+    /* max-width: 400px; */
     border-radius: 5px;
 }
 
@@ -50,6 +50,7 @@
     font-size: 1.5em;
     color: #6D6D6D;
     line-height: 1.2;
+    margin: 0;
 }
 
 .conteudo-presell .image-presell{
@@ -73,6 +74,7 @@
 .conteudo-presell .headline-2 p{
     font-size: 1.5em;
     line-height: 1.2;
+    margin: 0;
 }
 
 .conteudo-presell .headline-2 strong{
@@ -80,8 +82,6 @@
 }
 
 .conteudo-presell .btn-artigo{
-    width: 100%;
-    max-width: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,12 +92,51 @@
     width: 100%;
     background: #27B940;
     border-radius: 5px;
-    padding: 15px;
+    padding: 10px 30px;
     color: #FFF;
     font-size: 2.5em;
     text-align: center;
     font-weight: bolder;
     text-transform: uppercase;
+}
+
+.conteudo-presell .texto-presell{
+    margin-top: 40px;
+}
+
+.conteudo-presell .texto-presell p{
+    margin: 20px 0;
+    font-size: 1.25em;
+}
+
+.conteudo-presell .texto-presell h1{
+    font-size: 2.2em;
+    font-weight: 600;
+}
+
+.conteudo-presell .texto-presell h2{
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.conteudo-presell .texto-presell h3{
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+.conteudo-presell .texto-presell h4{
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+.conteudo-presell .texto-presell h5{
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.conteudo-presell .texto-presell h6{
+    font-size: 1.2em;
+    font-weight: 600;
 }
 
 .conteudo-presell .lista-prsell{
@@ -109,17 +148,21 @@
 .conteudo-presell .lista-prsell h3{
     font-size: 1.5em;
     line-height: 1.2;
+    font-weight: 600;
+    color: #2b2b2b;
 }
 
-.conteudo-presell .lista-prsell ul{
+.conteudo-presell .lista-prsell ul,
+.conteudo-presell .texto-presell ul{
     width: 90%;
-    max-width: 500px;
+    max-width: 800px;
     margin: 30px auto 0;
     list-style: none;
 }
 
-.conteudo-presell .lista-prsell ul li{
-    font-size: 1.4em;
+.conteudo-presell .lista-prsell ul li,
+.conteudo-presell .texto-presell ul li{
+    font-size: 1.2em;
     color: #6D6D6D;
     border-bottom: 1px solid #D1D1D1;
     line-height: 2;
@@ -132,26 +175,31 @@
     .conteudo-presell .titulo a{
         font-size: 2.3em;
     }
+    .conteudo-presell .headline-1,
+    .conteudo-presell .btn-artigo,
+    .conteudo-presell .lista-prsell{
+        margin-top: 30px;
+    }
 }
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 420px){
     .conteudo-presell .titulo h2{
         font-size: 1.8em;
     }
     .conteudo-presell .titulo a{
-        font-size: 2em;
+        font-size: 1.7em;
     }
     .conteudo-presell .headline-1 p, 
     .conteudo-presell .headline-2 p, 
     .conteudo-presell .lista-prsell h3{
-        font-size: 1.1em;
+        font-size: 1.3em;
     }
     .conteudo-presell .lista-prsell ul li{
         font-size: 1em;
     }
     .conteudo-presell .btn-artigo a{
         padding: 10px;
-        font-size: 2.2em;
+        font-size: 2em;
     }
 }
 

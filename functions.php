@@ -33,9 +33,9 @@ function formoney_adicionar_post_presell()
 			'public'              => true,
 			'exclude_from_search' => true,
 			'has_archive'         => false,
-			'menu_position'       => 2,
+			'menu_position'       => 5,
 			'menu_icon'           => 'dashicons-welcome-widgets-menus',
-			'supports'            => array('title', 'thumbnail')
+			'supports'            => array('title', 'thumbnail', 'editor')
 		)
 	);
 }
@@ -58,9 +58,14 @@ function formoney_metabox_callback($post)
 {
 	$idioma = get_post_meta( $post->ID, '_idioma', true );
 	$tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
+	// $quant_banner = get_post_meta( $post->ID, '_quant_banner', true );
 	$titulo = get_post_meta( $post->ID, '_titulo', true );
+	$subtitulo = get_post_meta( $post->ID, '_headline_1', true );
+	$headline = get_post_meta( $post->ID, '_headline', true );
+	$headline_2 = get_post_meta( $post->ID, '_headline_2', true );
 	$titulo_lista = get_post_meta( $post->ID, '_titulo_lista', true );
 	$link = get_post_meta( $post->ID, '_link', true );
+	$texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
 	$item_1 = get_post_meta( $post->ID, '_item_1', true );
 	$item_2 = get_post_meta( $post->ID, '_item_2', true );
 	$item_3 = get_post_meta( $post->ID, '_item_3', true );
@@ -83,26 +88,58 @@ function formoney_metabox_callback($post)
 		}
 	</style>
 	<div style="display: flex; justify-content: center; margin-bottom: 20px;">
-		<input value="<?= $idioma ?>" name="idioma" placeholder="Selecione um idioma" list="idioma" type="text" style="width: 200px; cursor: pointer">
-			<datalist id="idioma">
-				<option value="Português"/>
-				<option value="Espanhol"/>
-			</datalist>
+		<div style="display: flex; flex-direction: column; margin-right: 3px">
+			<label for="idioma">Selecione um idioma:</label>
+			<select name="idioma" id="idioma" style="width: 150px">
+				<option value="<?= $idioma ?>"><?= $idioma ?></option>
+				<option value="Português">Português</option>
+				<option value="Espanhol">Espanhol</option>
+				<option value="Inglês">Inglês</option>
+			</select>
+		</div>
 
-			<input value="<?= $tipo_post ?>" name="tipo_post" placeholder="selecione o tipo de post" list="tipo-post" type="text" style="width: 200px; cursor: pointer">
-			<datalist id="tipo-post">
-				<option value="Cartão"/>
-				<option value="Empréstimo"/>
-			</datalist>
+		<div style="display: flex; flex-direction: column; margin-left: 3px">
+			<label for="tipo_post">Selecione o tipo de post:</label>
+			<select name="tipo_post" id="tipo_post" style="width: 150px">
+				<option value="<?= $tipo_post ?>"><?= $tipo_post ?></option>
+				<option value="BlackFriday">BlackFriday</option>
+				<option value="Um Botão">Um Botão</option>
+				<option value="Dois Botões">Dois Botões</option>
+			</select>
+		</div>
 
+		<!-- <div style="display: flex; flex-direction: column; margin-left: 3px">
+			<label for="quant_banner">Selecione quantos banner:</label>
+			<select name="quant_banner" id="quant_banner" style="width: 150px">
+				<option value="<?= $quant_banner ?>"><?= $quant_banner ?></option>
+				<option value="1">1</option>
+				<option value="3">3</option>
+			</select>
+		</div> -->
 	</div>
 
 	<label for="titulo">Título</label>
 	<input name="titulo" type="text" value="<?= $titulo; ?>">
 	<br>
     <br>
+	<label for="headline_1">Subtitulo</label>
+	<input name="subtitulo" type="text" value="<?= $subtitulo; ?>">
+	<br>
+	<br>
+	<label for="headline">Headline</label>
+	<input name="headline" type="text" value="<?= $headline; ?>">
+	<br>
+	<br>
+	<label for="headline_2">Headline 2 [Atenção]</label>
+	<input name="headline_2" type="text" value="<?= $headline_2; ?>">
+	<br>
+	<br>
 	<label for="link">Link do artigo</label>
 	<input name="link" type="text" value="<?= $link; ?>">
+	<br>
+    <br>
+	<label for="texto_botao">Texto do botão</label>
+	<input name="texto_botao" type="text" value="<?= $texto_botao; ?>">
 	<br>
     <br>
 	<label for="titulo_lista">Título da lista</label>
@@ -148,14 +185,8 @@ function formoney_metabox_callback($post)
 	<br>
 	<label for="item_10">Item 10</label>
 	<input name="item_10" type="text" value="<?= $item_10; ?>">
-
-	<div id="lista">
-
-	</div>
-
 	<br>
     <br>
-	<img class="modelo-presell" src="http://localhost:8888/formoney/wp-content/uploads/2021/10/modeloPresell.png" alt="Modelo Presell">
 
 	<?php
 }
@@ -165,9 +196,14 @@ function formoney_salvar_dados_meta_box($post_id)
 	foreach($_POST as $key=>$value){
 		if($key !== 'tipo_post'
 		&& $key !== 'idioma'
+		// && $key !== 'quant_banner'
 		&& $key !== 'titulo'
+		&& $key !== 'headline'
+		&& $key !== 'headline_1'
+		&& $key !== 'headline_2'
 		&& $key !== 'titulo_lista' 
 		&& $key !== 'link' 
+		&& $key !== 'texto_botao'
 		&& $key !== 'item_1' 
 		&& $key !== 'item_2' 
 		&& $key !== 'item_3' 
@@ -188,5 +224,4 @@ function formoney_salvar_dados_meta_box($post_id)
 		);
 	}
 }
-
 add_action( 'save_post', 'formoney_salvar_dados_meta_box' );

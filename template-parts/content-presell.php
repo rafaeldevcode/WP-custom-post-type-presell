@@ -8,56 +8,16 @@
  */
 ?>
 <?php
-
-    $utm_source = isset($_GET['utm_source']) ? $_GET['utm_source'] : '';
-    $utm_campaign = isset($_GET['utm_campaign']) ? $_GET['utm_campaign'] : '';
-    $utm_term = isset($_GET['utm_term']) ? $_GET['utm_term'] : '';
-    // $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : '';
-    $utm_medium = isset($_GET['utm_medium']) ? $_GET['utm_medium'] : '';
-
-    $parametros = "?utm_source={$utm_source}&utm_campaign={$utm_campaign}&utm_term={$utm_term}&utm_medium={$utm_medium}";
-
-    $colecao_idiomas = array(
-        'Português' => array(
-            'Cartão' => array(
-                'subtitulo' => 'aprovado',
-                'headline_1' => 'Parabéns, está a um passo de solicitar o cartão que mais aprova, com inúmeras vantagens e fácil aprovação.',
-                'atencao' => 'ATENÇÃO:',
-                'headline_2' => 'Restam poucas unidades, solicite imediatamente!',
-                'texto_botao' => 'ver cartão',
-            ),
-            'Empréstimo' => array(
-                'subtitulo' => 'aprovado',
-                'headline_1' => 'Vamos te dar várias dicas e orientaçõs de como ser aprovado em um empréstimo, mesmo estando negativado.',
-                'atencao' => 'ATENÇÃO:',
-                'headline_2' => 'Não perca essa ótima oportunidade!',
-                'texto_botao' => 'ver empréstimo',
-            )
-        ),
-
-        'Espanhol' => array(
-            'Cartão' => array(
-                'subtitulo' => 'aprobado',
-                'headline_1' => 'Enhorabuena, estás a un paso de solicitar la tarjeta que más aprueba, con numerosas ventajas y fácil aprobación.',
-                'atencao' => 'ATENCIÓN:',
-                'headline_2' => 'Quedan pocas unidades, ¡haga su pedido de inmediato!',
-                'texto_botao' => 'ver tarjeta',
-            ),
-            'Empréstimo' => array(
-                'subtitulo' => 'aprobado',
-                'headline_1' => 'Le daremos varios consejos y pautas sobre cómo ser aprobado para un préstamo, incluso si es negativo.',
-                'atencao' => 'ATENCIÓN:',
-                'headline_2' => 'No pierdas esta gran oportunidad',
-                'texto_botao' => 'ver préstamo',
-            )
-        )
-    );
-
-	$idioma = get_post_meta( $post->ID, '_idioma', true );
-	$tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
+    
+    $idioma = get_post_meta( $post->ID, '_idioma', true );
+    $tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
     $titulo = get_post_meta( $post->ID, '_titulo', true );
-	$titulo_lista = get_post_meta( $post->ID, '_titulo_lista', true );
+    $subtitulo = get_post_meta( $post->ID, '_subtitulo', true );
+    $headline = get_post_meta( $post->ID, '_headline', true );
+    $headline_2 = get_post_meta( $post->ID, '_headline_2', true );
+    $titulo_lista = get_post_meta( $post->ID, '_titulo_lista', true );
     $link = get_post_meta(get_the_ID(), '_link', true);
+    $texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
     $item_1 = get_post_meta(get_the_ID(), '_item_1', true );
     $item_2 = get_post_meta(get_the_ID(), '_item_2', true );
     $item_3 = get_post_meta(get_the_ID(), '_item_3', true );
@@ -69,17 +29,45 @@
     $item_9 = get_post_meta(get_the_ID(), '_item_9', true );
     $item_10 = get_post_meta(get_the_ID(), '_item_10', true );
 
+    $utm_source = isset($_GET['utm_source']) ? $_GET['utm_source'] : '';
+    $utm_campaign = isset($_GET['utm_campaign']) ? $_GET['utm_campaign'] : '';
+    $utm_term = isset($_GET['utm_term']) ? $_GET['utm_term'] : '';
+    // $utm_content = isset($_GET['utm_content']) ? $_GET['utm_content'] : '';
+    $utm_medium = isset($_GET['utm_medium']) ? $_GET['utm_medium'] : '';
+    $fb = isset($_GET['fb']) ? $_GET['fb'] : '';
+    $tt = isset($_GET['tt']) ? $_GET['tt'] : '';
+
+    $parametros = "?utm_source={$utm_source}&utm_campaign={$utm_campaign}&utm_term={$utm_term}&utm_medium={$utm_medium}&fb={$fb}&tt={$tt}";
+
+    $background = $tipo_post == 'BlackFriday' ? 'style="background: #000;"' : '';
+
+    $colecao_idiomas = array(
+        'Português' => array(
+            'atencao' => 'ATENÇÃO:',
+        ),
+
+        'Espanhol' => array(
+            'atencao' => 'ATENCIÓN:',
+        ),
+
+        'Inglês' => array(
+            'atencao' => 'ATTENTION:',
+        )
+    );
+
 ?>
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri() ?>/css/presell.css">
+    <link rel="stylesheet" href="https://moneynews.com.br/wp-content/themes/jnews-child/assets/css/presell.css">
     
     <article id="post-<?php the_ID(); ?>" class="conteudo-presell">
         <div class="titulo">
+        <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
             <h2> <?= $titulo ?> </h2>
-            <a><?php echo $colecao_idiomas[$idioma][$tipo_post]['subtitulo']; ?></a>
+            <a <?= $background ?>> <?php echo $subtitulo; ?></a>
         </div>
 
         <div class="headline-1">
-            <p><?php echo $colecao_idiomas[$idioma][$tipo_post]['headline_1']; ?></p>
+            <p><?php echo $headline; ?></p>
+            <?php if (function_exists ('adinserter')) echo adinserter (19); ?>
         </div>
 
         <div class="image-presell">
@@ -87,11 +75,15 @@
         </div>
 
         <div class="headline-2">
-            <p><strong><?php echo $colecao_idiomas[$idioma][$tipo_post]['atencao']; ?></strong> <?php echo $colecao_idiomas[$idioma][$tipo_post]['headline_2']; ?> </p>
+            <p><strong><?php echo $colecao_idiomas[$idioma]['atencao']; ?></strong> <?php echo $headline_2; ?> </p>
         </div>
         
         <div class="btn-artigo">
-            <a href="<?= $link.$parametros ?>"> <?php echo $colecao_idiomas[$idioma][$tipo_post]['texto_botao']; ?> </a>
+            <a <?= $background ?> href="<?= $link.$parametros ?>"> <?php echo $texto_botao; ?> </a>
+        </div>
+
+        <div class="texto-presell">
+            <?php the_content(); ?>
         </div>
 
         <div class="lista-prsell">
@@ -113,8 +105,11 @@
             </ul>
         </div>
 
-        <div class="btn-artigo">
-            <a href="<?= $link.$parametros ?>"> <?php echo $colecao_idiomas[$idioma][$tipo_post]['texto_botao']; ?>  </a>
-        </div>
+        <?php
+            if($tipo_post !== 'Um Botão'){ ?>
+                <div class="btn-artigo">
+                    <a <?= $background ?> href="<?= $link.$parametros ?>"> <?php echo $texto_botao; ?>  </a>
+                </div>
+            <?php } ?>
 
     </article>
