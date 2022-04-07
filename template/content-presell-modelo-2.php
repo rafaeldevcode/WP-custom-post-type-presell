@@ -11,11 +11,11 @@
     
     $idioma = get_post_meta( $post->ID, '_idioma', true );
     $tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
+    $text_top = get_post_meta( $post->ID, '_text_top', true );
     $titulo = get_post_meta( $post->ID, '_titulo', true );
     $subtitulo = get_post_meta( $post->ID, '_subtitulo', true );
     $headline = get_post_meta( $post->ID, '_headline', true );
     $headline_2 = get_post_meta( $post->ID, '_headline_2', true );
-    $titulo_lista = get_post_meta( $post->ID, '_titulo_lista', true );
     $link = get_post_meta(get_the_ID(), '_link', true);
     $texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
     $link_adicional = get_post_meta(get_the_ID(), '_link_adicional', true);
@@ -33,15 +33,15 @@
 
     $colecao_idiomas = array(
         'Português' => array(
-            'firs_title' => 'Olha o que encontramos!',
+            'label_progress' => 'Estamos quase lá',
         ),
 
         'Espanhol' => array(
-            'firs_title' => '!Mira lo que hemos encontrado!',
+            'label_progress' => '¡Estamos casi alli!',
         ),
 
         'Inglês' => array(
-            'firs_title' => 'Look what we found!',
+            'label_progress' => 'We are almost there!',
         )
     );
 ?>
@@ -50,8 +50,10 @@
     
     <article id="post-<?php the_ID(); ?>" class="conteudo-presell">
         <div class="titulos">
-            <p><?php echo $colecao_idiomas[$idioma]['firs_title']; ?></p>
+            <p><?php echo $text_top ?></p>
             <h1><?php echo $titulo ?></h1>
+            <h2><?php echo $subtitulo ?></h2>
+            <span><?php echo $colecao_idiomas[$idioma]['label_progress'] ?></span>
         </div>
 
         <!-- Banner Desktop -->

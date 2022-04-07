@@ -61,6 +61,7 @@ function alterarLabel(template, templateColecao){
 function retornarTemplate(templateParam){
     const template = {
         Modelo_1: {
+            text_top: false,
             headline: true,
             titulo: true,
             subtitulo: true,
@@ -82,9 +83,10 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_2: {
+            text_top: true,
             headline: true,
             titulo: true,
-            subtitulo: false,
+            subtitulo: true,
             headline_2: true,
             titulo_lista: false,
             link: true,
@@ -103,6 +105,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Nenhum: {
+            text_top: false,
             headline: false,
             titulo: false,
             subtitulo: false,

@@ -16,6 +16,9 @@
     width: 96%;
     margin: 10px 0;
 }
+.content-presell-titulos > div{
+    margin: 10px 0;
+}
 .presell-inputs-group-list,
 .presell-inputs-group-link,
 .content-presell-headline{
