@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+:root{
+    --color-main: #27B940;
+}
+
+.conteudo-presell{
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 15px;
+}
+
+.titulos{
+    text-align: center;
+    position: relative;
+    border-bottom: 4px solid rgb(165, 165, 165);
+    margin: 40px 0 20px 0;
+}
+
+.titulos::before{
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 10%;
+    height: 4px;
+    background: var(--color-main);
+}
+
+.titulos p{
+    color: rgb(104, 104, 104);
+    font-size: 1.1em;
+    margin: 10px 0 40px 0;
+}
+
+.titulos h1{
+    font-size: 1.6em;
+    font-weight: 600;
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.card-desc{
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    display: flex;
+    vertical-align: middle;
+}
+
+.card-desc .card{
+    width: 50%;
+    padding: 20px;
+}
+
+.card-desc .card img{
+    width: 100%;
+}
+
+.card-desc .desc-btn{
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-desc .desc-btn .desc p{
+    font-size: 1.3em;
+    color: rgb(95, 95, 95);
+}
+
+.card-desc .desc-btn .btn-presell{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 0;
+    border-top: 1px solid rgb(210, 210, 210);
+}
+
+.btn-presell  .link-btn{
+    color: #FFF;
+    font-size: 1.6em;
+    background: var(--color-main);
+    padding: 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: all .4s;
+    border: 1px solid var(--color-main);
+    text-align: center;
+}
+
+.btn-presell  .link-btn:hover{
+    background: #FFF;
+    color: var(--color-main);
+}
+
+.text{
+    text-align: center;
+    color: rgb(95, 95, 95);
+    font-size: 1.3em;
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.list-desc ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.list-desc ul li{
+    padding: 15px;
+    width: 100%;
+    max-width: 300px;
+    background: rgb(245, 245, 245);
+    border-radius: 5px;
+    border: 1px solid #27b93f64;
+    margin: 10px;
+    color: rgb(86, 86, 86);
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.list-desc ul li i{
+    color: var(--color-main);
+    margin-right: 5px;
+}
+
+.btn-bottom{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.link{
+    text-align: center;
+    margin: 20px;
+}
+
+.link a{
+    font-size: 1.3em;
+    font-weight: bolder;
+    color: var(--color-main);
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 700px){
+    .card-desc{
+        flex-direction: column;
+    }
+    .card-desc .card,
+    .card-desc .desc-btn{
+        width: 100%;
+    }
+    .card-desc .desc-btn{
+        margin-top: 40px;
+    }
+    .desc{
+        margin-bottom: 20px;
+    }
+    .list-desc ul li{
+        max-width: 400px;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .btn-presell .link-btn{
+        width: 100%;
+    }
+}

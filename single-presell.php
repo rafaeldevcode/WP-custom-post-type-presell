@@ -1,5 +1,5 @@
 <?php
-    get_header(); 
+    get_header();
 
     $args = array(
         'post_type'      => 'presell',
@@ -10,9 +10,13 @@
 
     $query = new WP_Query( $args );
     
-            the_post();
-            
-            get_template_part('template-parts/content', get_post_type());
+        the_post();
+        $modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
+        $modelo_presell = str_replace('_', '-', $modelo_presell);
+        $modelo_presell = empty($modelo_presell) ? 'modelo-1' : $modelo_presell;
+
+        get_template_part('template/content', 'presell-'.$modelo_presell);
                 
 
-    get_footer();?>
+    get_footer();
+?>
