@@ -1,5 +1,4 @@
 <?php
-
 ////////////// REGISTRAR TAXONAMIA INIT ///////////////
 function formoney_categoria_customizada()
 {
@@ -59,6 +58,7 @@ function formoney_metabox_callback($post)
 	$idioma = get_post_meta( $post->ID, '_idioma', true );
 	$tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
 	$modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
+	$form_id = get_post_meta( $post->ID, '_form_id', true );
 	$text_top = get_post_meta( $post->ID, '_text_top', true );
 	$titulo = get_post_meta( $post->ID, '_titulo', true );
 	$subtitulo = get_post_meta( $post->ID, '_subtitulo', true );
@@ -84,7 +84,7 @@ function formoney_metabox_callback($post)
 	];
 	?>
 
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell.css' ?>">
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/assets/css/presell.css' ?>">
 
 	<section class="content-presell">
 		<div class="select-group">
@@ -115,11 +115,17 @@ function formoney_metabox_callback($post)
 					<option value="<?= $modelo_presell ?>"><?= ucfirst(str_replace('_', ' ', $modelo_presell)) ?></option>
 					<option value="modelo_1">Modelo 1</option>
 					<option value="modelo_2">Modelo 2</option>
+					<option value="modelo_3">Modelo 2 + Formulário</option>
 				</select>
 			</div>
 		</div>
 
 		<div class="content-presell-titulos">
+			<div>
+				<label for="form_id">ID de formulário do Mautic</label>
+				<input class="input-presell" name="form_id" type="text" value="<?= $form_id; ?>">
+			</div>
+
 			<div>
 				<label for="text_top">Texto do topo</label>
 				<input class="input-presell" name="text_top" type="text" value="<?= $text_top; ?>">
@@ -199,6 +205,7 @@ function formoney_salvar_dados_meta_box($post_id)
 	foreach($_POST as $key=>$value){
 		if($key !== 'tipo_post'
 		&& $key !== 'idioma'
+		&& $key !== 'form_id'
 		&& $key !== 'titulo'
 		&& $key !== 'headline'
 		&& $key !== 'text_top'

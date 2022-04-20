@@ -9,6 +9,7 @@
 ?>
 <?php
     
+    $modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
     $idioma = get_post_meta( $post->ID, '_idioma', true );
     $tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
     $text_top = get_post_meta( $post->ID, '_text_top', true );
@@ -80,6 +81,13 @@
             </div>
         </div>
 
+        <!-- Exibir formulario caso seja Modelo 2 + Formulário -->
+        <?php
+            if($modelo_presell === 'modelo_3'):
+                get_template_part( 'templates/components/content', 'formulario');
+            endif;
+        ?>
+
         <?php
             if(!empty($item_1)): ?>
                 <div class="text">
@@ -125,3 +133,5 @@
 			<?php endif;
 		?>
     </article>
+
+    <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/main.js' ?>"></script>

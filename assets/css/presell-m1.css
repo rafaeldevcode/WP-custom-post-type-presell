@@ -12,18 +12,11 @@
     line-height: 1.5;
 }
 
-.conteudo-presell .titulo{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-}
-
 .conteudo-presell .titulo h2{
     font-size: 2.5em;
     font-weight: bolder;
     text-align: center;
+	text-transform: uppercase;
 }
 
 .conteudo-presell .titulo a{
@@ -31,13 +24,14 @@
     background: #27B940;
     color: #FFF;
     text-align: center;
-    display: inline;
+    display: block;
     text-transform: uppercase;
     font-weight: bolder;
     padding: 0px 30px;
     width: auto;
     /* max-width: 400px; */
     border-radius: 5px;
+	text-transform: uppercase;
 }
 
 .conteudo-presell .headline-1{
