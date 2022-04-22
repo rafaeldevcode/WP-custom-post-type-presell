@@ -115,7 +115,7 @@ function formoney_metabox_callback($post)
 					<option value="<?= $modelo_presell ?>"><?= ucfirst(str_replace('_', ' ', $modelo_presell)) ?></option>
 					<option value="modelo_1">Modelo 1</option>
 					<option value="modelo_2">Modelo 2</option>
-					<option value="modelo_3">Modelo 2 + Formulário</option>
+					<option value="modelo_3">Modelo 3</option>
 				</select>
 			</div>
 		</div>

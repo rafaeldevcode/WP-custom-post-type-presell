@@ -28,10 +28,10 @@ function validateField(field){
         let spanError = field.parentNode.querySelector('span.error');
 
         if(message){
-            spanError.classList.add('alert');
+            spanError.classList.add('alert-message');
             spanError.innerHTML = message;
         }else{
-            spanError.classList.remove('alert');
+            spanError.classList.remove('alert-message');
             spanError.innerHTML = '';
         }
     }

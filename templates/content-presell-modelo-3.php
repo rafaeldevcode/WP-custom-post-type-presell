@@ -134,4 +134,4 @@
 		?>
     </article>
 
-    <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/main.js' ?>"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/custom.js' ?>"></script>

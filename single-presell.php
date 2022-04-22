@@ -15,7 +15,7 @@
         $modelo_presell = str_replace('_', '-', $modelo_presell);
         $modelo_presell = empty($modelo_presell) ? 'modelo-1' : $modelo_presell;
 
-        get_template_part('template/content', 'presell-'.$modelo_presell);
+        get_template_part('templates/content', 'presell-'.$modelo_presell);
                 
 
     get_footer();

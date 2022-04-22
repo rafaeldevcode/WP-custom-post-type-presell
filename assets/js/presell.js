@@ -167,6 +167,10 @@ function retornarLabel(modelo)
         Modelo_2: {
             headline: 'Texto 1',
             headline_2: 'Texto 2',
+        },
+        Modelo_3: {
+            headline: 'Texto 1',
+            headline_2: 'Texto 2',
         }
     };
 

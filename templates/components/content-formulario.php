@@ -1,10 +1,12 @@
+<?php $form_id = get_post_meta( $post->ID, '_form_id', true ); ?>
+
 <section class="formulario-presell" id="formulario-presell">
     <div class="loading" id="loading"><div></div></div>
 
     <h4>Receba agora uma indicação de cartão de crédito, com limite pré aprovado!</h4>
     <form action="?" method="POST" id="formulario">
-        <input type="hidden" id="form_id" name="form_id" value="<?php echo get_template_directory_uri() . '/template-parts/components/send_api.ph' ?>">
-        <input type="hidden" id="form_id" name="form_id" value="1">
+        <input type="hidden" id="url" name="url" value="https://formoney.com.br/api_mautic/send_api.php">
+        <input type="hidden" id="form_id" name="form_id" value="<?php echo $form_id ?>">
 
         <div class="inputs">
             <div class="input">
