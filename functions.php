@@ -65,6 +65,8 @@ function formoney_metabox_callback($post)
 	$headline = get_post_meta( $post->ID, '_headline', true );
 	$headline_2 = get_post_meta( $post->ID, '_headline_2', true );
 	$titulo_lista = get_post_meta( $post->ID, '_titulo_lista', true );
+	$headline_form = get_post_meta( $post->ID, '_headline_form', true );
+	$botao_form = get_post_meta( $post->ID, '_botao_form', true );
 	$link = get_post_meta( $post->ID, '_link', true );
 	$texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
     $link_adicional = get_post_meta(get_the_ID(), '_link_adicional', true);
@@ -84,7 +86,7 @@ function formoney_metabox_callback($post)
 	];
 	?>
 
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/assets/css/presell.css' ?>">
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell.css' ?>">
 
 	<section class="content-presell">
 		<div class="select-group">
@@ -115,17 +117,12 @@ function formoney_metabox_callback($post)
 					<option value="<?= $modelo_presell ?>"><?= ucfirst(str_replace('_', ' ', $modelo_presell)) ?></option>
 					<option value="modelo_1">Modelo 1</option>
 					<option value="modelo_2">Modelo 2</option>
-					<option value="modelo_3">Modelo 2 + Formulário</option>
+					<option value="modelo_3">Modelo 3</option>
 				</select>
 			</div>
 		</div>
 
 		<div class="content-presell-titulos">
-			<div>
-				<label for="form_id">ID de formulário do Mautic</label>
-				<input class="input-presell" name="form_id" type="text" value="<?= $form_id; ?>">
-			</div>
-
 			<div>
 				<label for="text_top">Texto do topo</label>
 				<input class="input-presell" name="text_top" type="text" value="<?= $text_top; ?>">
@@ -176,6 +173,23 @@ function formoney_metabox_callback($post)
 			</div>
 		</div>
 
+		<div class="content-presell-headlines">
+			<div class="content-presell-headline">
+				<label for="headline_form">Headline do formulário</label>
+				<input class="input-presell" name="headline_form" type="text" value="<?= $headline_form; ?>">
+			</div>
+
+			<div class="content-presell-headline">
+				<label for="botao_form">Botão do formulário</label>
+				<input class="input-presell" name="botao_form" type="text" value="<?= $botao_form; ?>">
+			</div>
+
+			<div class="content-presell-headline">
+				<label for="form_id">ID de formulário do Mautic</label>
+				<input class="input-presell" name="form_id" type="text" value="<?= $form_id; ?>">
+			</div>
+		</div>
+
 		<div class="presell-inputs-group-list-title">
 			<label for="titulo_lista">Título da lista</label>
 			<input class="input-presell" name="titulo_lista" type="text" value="<?= $titulo_lista; ?>">
@@ -212,6 +226,8 @@ function formoney_salvar_dados_meta_box($post_id)
 		&& $key !== 'subtitulo'
 		&& $key !== 'headline_2'
 		&& $key !== 'titulo_lista' 
+		&& $key !== 'headline_form'
+		&& $key !== 'botao_form' 
 		&& $key !== 'link' 
 		&& $key !== 'texto_botao'
 		&& $key !== 'link_adicional' 

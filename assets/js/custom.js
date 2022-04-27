@@ -1,3 +1,15 @@
+document.getElementById('telefone').addEventListener('input', ()=>{
+    let telefone = document.getElementById('telefone');
+
+    if(telefone.value == ''){
+        telefone.required = false;
+        telefone.classList.add('telefone');
+    }else{
+        telefone.required = true;
+        telefone.classList.remove('telefone');
+    }
+})
+
 function getFields(){
     let fields = document.querySelectorAll('[required]');
 
@@ -28,16 +40,17 @@ function validateField(field){
         let spanError = field.parentNode.querySelector('span.error');
 
         if(message){
-            spanError.classList.add('alert');
+            spanError.classList.add('invalid');
             spanError.innerHTML = message;
         }else{
-            spanError.classList.remove('alert');
+            spanError.classList.remove('invalid');
             spanError.innerHTML = '';
         }
     }
 
     function customMessage(typeError){
-        let valueMissing = 'Por favor, preencha este campo!'
+        let idioma = document.getElementById('idioma').value;
+        let valueMissing = returnMessageTranslated(idioma, 'valueMissing');
 
         const message = {
             text: {
@@ -45,7 +58,7 @@ function validateField(field){
             },
             email: {
                 valueMissing: valueMissing,
-                typeMismatch: 'Por favor, digite um email válido!'
+                typeMismatch: returnMessageTranslated(idioma, 'typeMismatch')
             }
         }
 
@@ -89,12 +102,13 @@ function sendForm(){
             let email = document.getElementById('email').value;
             let telefone = document.getElementById('telefone').value;
             let formId = document.getElementById('form_id').value;
+            let idioma = document.getElementById('idioma').value;
 
             let formData = {
                 'nome'   : nome,
                 'email'  : email,
                 'celular': telefone,
-                'formId' : 1,
+                'formId' : formId,
             }
 
             fetch(url, {
@@ -102,16 +116,45 @@ function sendForm(){
                 body: formData
             }).then((response) => {
                 if(response.status === 200){
+                    fbq('track', 'lead');
+                    
                     let h4 = document.createElement('h4');
-                        h4.innerHTML = 'Seu contato foi enviado com sucesso! Aguarde alguns minutos e lhe enviaremos mais informações.'
+                        h4.innerHTML = returnMessageTranslated(idioma, 'formularioEnviado');
                         formularioPresell.innerHTML = '';
                         formularioPresell.appendChild(h4);
+
+                        let ocultarBotao = document.querySelectorAll('.btn-presell');
+                            for (let i = 0; i < ocultarBotao.length; i++) {
+                                ocultarBotao[i].classList.remove('ocultar-botao');
+                            }
                 }
             })
         } catch (error) {
             console.error(error);
         }
-    })
+    });
+}
+
+function returnMessageTranslated(idioma, typeMessage){
+    const message = {
+        Português: {
+            formularioEnviado: 'Pronto! Enviaremos no seu e-mail em alguns minutos o link do cartão.',
+            valueMissing: 'Por favor, preencha este campo!',
+            typeMismatch: 'Por favor, digite um email válido!'
+        },
+        Espanhol: {
+            formularioEnviado: '¡Em breve! Le enviaremos el enlace de la tarjeta a su correo electrónico en unos minutos.',
+            valueMissing: '¡Por favor complete este campo!',
+            typeMismatch: 'Por favor, escriba un correo electrónico válido.'
+        },
+        Inglês: {
+            formularioEnviado: 'Ready! We will send the card link to your email in a few minutes.',
+            valueMissing: 'Please fill in this field!',
+            typeMismatch: 'Please, type a valid email.'
+        }
+    }
+
+    return message[idioma][typeMessage];
 }
 
 getFields();

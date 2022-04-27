@@ -196,6 +196,7 @@
     color: rgb(86, 86, 86);
     font-size: 1.2em;
     text-align: center;
+    font-weight: bolder;
 }
 
 .formulario-presell .inputs{
@@ -234,17 +235,18 @@
     left: 3px;
     color: var(--color-main);
     font-weight: bolder;
-    font-size: .8em;
+    font-size: 1.2em;
     transition: all .4s ease-in-out;
 }
 
 .formulario-presell .input input:focus ~ label,
-.formulario-presell .input input:valid ~ label{
+.formulario-presell .input input:valid:not(.telefone) ~ label{
     transform: translateY(-32px);
     font-size: 1em;
 }
 
-.formulario-presell .input input[type="submit"]{
+.formulario-presell .input .input-form{
+    height: auto;
     cursor: pointer;
     border-radius: 4px;
     background: var(--color-main);
@@ -255,8 +257,8 @@
     transition: all .4s;
 }
 
-.formulario-presell .input input[type="submit"]:hover{
-    background: #FFF;
+.formulario-presell .input .input-form:hover{
+    background: #FFF !important;
     color: var(--color-main);
 }
 
@@ -272,7 +274,7 @@
     text-align: right;
 }
 
-.alert{
+.invalid{
     animation: mostrarErro .4s ease-in-out forwards;
 }
 
@@ -302,6 +304,10 @@
     border-radius: 50%;
     border-bottom: 3px solid #FFF;
     animation: loading .7s linear infinite;
+}
+
+.ocultar-botao{
+    display: none !important;
 }
 
 @media only screen and (max-width: 700px){

@@ -12,6 +12,7 @@
     $modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
     $idioma = get_post_meta( $post->ID, '_idioma', true );
     $tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
+    $form_id = get_post_meta( $post->ID, '_form_id', true );
     $text_top = get_post_meta( $post->ID, '_text_top', true );
     $titulo = get_post_meta( $post->ID, '_titulo', true );
     $subtitulo = get_post_meta( $post->ID, '_subtitulo', true );
@@ -32,19 +33,19 @@
     $item_9 = get_post_meta(get_the_ID(), '_item_9', true );
     $item_10 = get_post_meta(get_the_ID(), '_item_10', true );
 
-    $colecao_idiomas = array(
-        'Português' => array(
+    $colecao_idiomas = [
+        'Português' =>[
             'label_progress' => 'Estamos quase lá',
-        ),
+        ],
 
-        'Espanhol' => array(
+        'Espanhol' => [
             'label_progress' => '¡Estamos casi alli!',
-        ),
+        ],
 
-        'Inglês' => array(
+        'Inglês' => [
             'label_progress' => 'We are almost there!',
-        )
-    );
+        ]
+    ];
 ?>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell-m2.css' ?>">
@@ -73,7 +74,7 @@
                 </div>
                 <?php
                     if($tipo_post !== 'Sem Botões'){ ?>
-                        <div class="btn-presell ">
+                        <div class="btn-presell ocultar-botao">
                             <a class="link-btn" href="<?php echo $link ?>" title="Link"><?php echo $texto_botao ?></a>
                         </div>
                     <?php } 
@@ -119,7 +120,7 @@
 
         <?php
             if($tipo_post === 'Dois Botões'){ ?>
-                <div class="btn-presell btn-bottom">
+                <div class="btn-presell btn-bottom ocultar-botao">
                     <a class="link-btn" href="<?php echo $link ?>" title="Link"><?php echo $texto_botao ?></a>
                 </div>
             <?php } 
@@ -134,4 +135,4 @@
 		?>
     </article>
 
-    <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/main.js' ?>"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/custom.js' ?>"></script>
