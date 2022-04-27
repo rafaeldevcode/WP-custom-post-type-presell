@@ -255,6 +255,7 @@
     font-weight: bolder;
     border: 1px solid var(--color-main);
     transition: all .4s;
+    height: auto;
 }
 
 .formulario-presell .input .input-form:hover{
@@ -274,7 +275,11 @@
     text-align: right;
 }
 
+<<<<<<< HEAD
 .invalid{
+=======
+.alert-message{
+>>>>>>> 3ccf7420d85d97a8bfcc8a4697c44fb1064d607a
     animation: mostrarErro .4s ease-in-out forwards;
 }
 

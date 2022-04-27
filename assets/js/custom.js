@@ -40,10 +40,17 @@ function validateField(field){
         let spanError = field.parentNode.querySelector('span.error');
 
         if(message){
+<<<<<<< HEAD:assets/js/custom.js
             spanError.classList.add('invalid');
             spanError.innerHTML = message;
         }else{
             spanError.classList.remove('invalid');
+=======
+            spanError.classList.add('alert-message');
+            spanError.innerHTML = message;
+        }else{
+            spanError.classList.remove('alert-message');
+>>>>>>> 3ccf7420d85d97a8bfcc8a4697c44fb1064d607a:assets/js/main.js
             spanError.innerHTML = '';
         }
     }
