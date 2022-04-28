@@ -275,11 +275,7 @@
     text-align: right;
 }
 
-<<<<<<< HEAD
 .invalid{
-=======
-.alert-message{
->>>>>>> 3ccf7420d85d97a8bfcc8a4697c44fb1064d607a
     animation: mostrarErro .4s ease-in-out forwards;
 }
 
