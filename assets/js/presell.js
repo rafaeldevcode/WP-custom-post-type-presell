@@ -34,10 +34,17 @@ function vericarSelect(){
 function ocultarInputs(templateColecao){
     for (let i = 0; i < inputs.length; i++) {
         let inputName = inputs[i].name;
+        let divInputRadio = inputs[i].parentNode.parentNode.parentNode.parentNode;
 
         if(templateColecao[inputName] === false){
+            // Ocultar div dos inputs radio caso seja formulario
+            divInputRadio.id == 'opcao_apos_envio' ? divInputRadio.style.display = 'none' : ''; 
+
             inputs[i].parentNode.style.display = 'none';
         }else if(templateColecao[inputName] === true){
+            // Exibir div dos inputs radio caso seja formulario
+            divInputRadio.id == 'opcao_apos_envio' ? divInputRadio.style.display = 'block' : ''; 
+            
             inputs[i].parentNode.style.display = 'block';
         }
     }
@@ -61,6 +68,7 @@ function alterarLabel(template, templateColecao){
 function retornarTemplate(templateParam){
     const template = {
         Modelo_1: {
+            opcao_apos_envio: false,
             text_top: false,
             headline: true,
             form_id: false,
@@ -86,6 +94,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_2: {
+            opcao_apos_envio: false,
             text_top: true,
             headline: true,
             form_id: false,
@@ -111,6 +120,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_3: {
+            opcao_apos_envio: true,
             text_top: true,
             headline: true,
             form_id: true,
@@ -136,6 +146,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Nenhum: {
+            opcao_apos_envio: false,
             text_top: false,
             headline: false,
             form_id: false,

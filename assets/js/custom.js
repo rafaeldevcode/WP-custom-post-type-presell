@@ -103,6 +103,8 @@ function sendForm(){
             let telefone = document.getElementById('telefone').value;
             let formId = document.getElementById('form_id').value;
             let idioma = document.getElementById('idioma').value;
+            let artigo = document.getElementById('artigo').value;
+            let opcaoAposEnvio = document.getElementById('opcao_apos_envio').value;
 
             let formData = {
                 'nome'   : nome,
@@ -115,17 +117,26 @@ function sendForm(){
                 method: 'POST',
                 body: formData
             }).then((response) => {
+                document.querySelector('html').style.scrollBehavior = 'smooth'
+                
                 if(response.status === 200){
-                    fbq('track', 'lead');
-                    
                     let h4 = document.createElement('h4');
                         h4.innerHTML = returnMessageTranslated(idioma, 'formularioEnviado');
                         formularioPresell.innerHTML = '';
                         formularioPresell.appendChild(h4);
 
                         let ocultarBotao = document.querySelectorAll('.btn-presell');
-                            for (let i = 0; i < ocultarBotao.length; i++) {
-                                ocultarBotao[i].classList.remove('ocultar-botao');
+                            if(opcaoAposEnvio == 'exibir_botoes'){
+                                for (let i = 0; i < ocultarBotao.length; i++) {
+                                    ocultarBotao[i].classList.remove('ocultar-botao');
+                                }
+                            }else if(opcaoAposEnvio == 'scrool_top'){
+                                for (let i = 0; i < ocultarBotao.length; i++) {
+                                    ocultarBotao[i].classList.remove('ocultar-botao');
+                                    window.scrollTo(0, 0);
+                                }
+                            }else if(opcaoAposEnvio == 'redirecionar'){
+                                window.location.href = artigo;
                             }
                 }
             })

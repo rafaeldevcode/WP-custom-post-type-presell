@@ -56,6 +56,7 @@ add_action( 'add_meta_boxes', 'formoney_adicionar_meta_box' );
 function formoney_metabox_callback($post)
 {
 	$idioma = get_post_meta( $post->ID, '_idioma', true );
+	$opcao_apos_envio = get_post_meta( $post->ID, '_opcao_apos_envio', true );
 	$tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
 	$modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
 	$form_id = get_post_meta( $post->ID, '_form_id', true );
@@ -119,6 +120,32 @@ function formoney_metabox_callback($post)
 					<option value="modelo_2">Modelo 2</option>
 					<option value="modelo_3">Modelo 3</option>
 				</select>
+			</div>
+		</div>
+
+		<div class="inputs-radios" id="opcao_apos_envio">
+			<h4>Opções após envio do formulário</h4>
+			<div>
+				<div>
+					<label>
+						Escrolar ao topo & exibir botões
+						<input type="radio" name="opcao_apos_envio" <?= $opcao_apos_envio == 'scrool_top' ? 'checked' : '' ?> value="scrool_top">
+					</label>
+				</div>
+
+				<div>
+					<label>
+						Redirecionar usuário
+						<input type="radio" name="opcao_apos_envio" <?= $opcao_apos_envio == 'redirecionar' ? 'checked' : '' ?> value="redirecionar">
+					</label>
+				</div>
+
+				<div>
+					<label>
+						Exibir botões
+						<input type="radio" name="opcao_apos_envio" <?= ($opcao_apos_envio == 'exibir_botoes')  || (empty($opcao_apos_envio)) ? 'checked' : '' ?> value="exibir_botoes">
+					</label>
+				</div>
 			</div>
 		</div>
 
@@ -218,6 +245,7 @@ function formoney_salvar_dados_meta_box($post_id)
 {
 	foreach($_POST as $key=>$value){
 		if($key !== 'tipo_post'
+		&& $key !== 'opcao_apos_envio'
 		&& $key !== 'idioma'
 		&& $key !== 'form_id'
 		&& $key !== 'titulo'
