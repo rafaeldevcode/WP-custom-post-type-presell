@@ -105,19 +105,19 @@ function sendForm(){
             let idioma = document.getElementById('idioma').value;
             let artigo = document.getElementById('artigo').value;
             let opcaoAposEnvio = document.getElementById('opcao_apos_envio').value;
+            let formData = new FormData();
 
-            let formData = {
-                'nome'   : nome,
-                'email'  : email,
-                'celular': telefone,
-                'formId' : formId,
-            }
+			formData.append('nome', nome);
+			formData.append('email', email);
+			formData.append('telefone', telefone);
+			formData.append('formId', formId);
 
             fetch(url, {
                 method: 'POST',
                 body: formData
             }).then((response) => {
-                document.querySelector('html').style.scrollBehavior = 'smooth'
+                document.querySelector('html').style.scrollBehavior = 'smooth';
+                console.log(response);
                 
                 if(response.status === 200){
                     let h4 = document.createElement('h4');
@@ -136,7 +136,9 @@ function sendForm(){
                                     window.scrollTo(0, 0);
                                 }
                             }else if(opcaoAposEnvio == 'redirecionar'){
-                                window.location.href = artigo;
+                                let querys = window.location.search;
+                                    console.log(querys);
+                                    window.location.href = `${artigo}${querys}&lead=1`;
                             }
                 }
             })
