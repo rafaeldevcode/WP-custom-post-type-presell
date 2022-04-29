@@ -137,8 +137,8 @@ function sendForm(){
                                 }
                             }else if(opcaoAposEnvio == 'redirecionar'){
                                 let querys = window.location.search;
-                                    console.log(querys);
-                                    window.location.href = `${artigo}${querys}&lead=1`;
+                                let url = querys == '' ? `${artigo}?lead=1` : `${artigo}${querys}&lead=1`;
+                                    window.location.href = url;
                             }
                 }
             })
