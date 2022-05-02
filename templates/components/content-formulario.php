@@ -15,7 +15,7 @@
 
         'Espanhol' => [
             'nome_form'      => 'Nombre',
-            'email_form'     => '',
+            'email_form'     => 'E-mail',
             'telefone_form'  => 'Teléfono'
         ],
 

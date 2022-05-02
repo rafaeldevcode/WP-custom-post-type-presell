@@ -2,7 +2,7 @@
 
 $dia = date("m.d.y");
 $response = str_replace(["\n", "\r", " "], '', sendApi());
-logMsg($response, 'INFO', "Logs/register-{$dia}.log");
+logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE: {$response}]", 'INFO', "Logs/register-{$dia}.log");
 
 function sendApi(): string
 {
@@ -61,7 +61,7 @@ function removerLog(): void
     if(is_dir($diretorio)){
         $itens = scandir($diretorio);
 
-        if(count($itens) > 30){
+        if(count($itens) > 15){
             unlink($diretorio.$itens[3]);
         }
     }
