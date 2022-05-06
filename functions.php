@@ -119,6 +119,7 @@ function formoney_metabox_callback($post)
 					<option value="modelo_1">Modelo 1</option>
 					<option value="modelo_2">Modelo 2</option>
 					<option value="modelo_3">Modelo 3</option>
+					<option value="modelo_4">Modelo 4</option>
 				</select>
 			</div>
 		</div>
