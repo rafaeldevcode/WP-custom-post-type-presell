@@ -68,17 +68,13 @@
         </form>
     </div>
 
-    <?php 
-        if($modelo_presell == 'modelo_5'): ?>
-            <div class="quiz" id="quiz" data-pergunta="pergunta_1">
-                <div class="pergunta">
-                    <h2></h2>
-                </div>
+    <div class="quiz <?php echo $modelo_presell == 'modelo_5' ? '' : 'display-none' ?>" id="quiz" data-pergunta="pergunta_1">
+        <div class="pergunta">
+            <h2></h2>
+        </div>
 
-                <div class="respostas">
-                    <ul></ul>
-                </div>
-            </div>
-        <?php endif;
-    ?>
+        <div class="respostas">
+            <ul></ul>
+        </div>
+    </div>
 </section>
