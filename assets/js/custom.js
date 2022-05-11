@@ -218,7 +218,7 @@ function sendForm(){
                                     let querys = window.location.search;
                                     let url = querys == '' ? `${artigo}?lead=1` : `${artigo}${querys}&lead=1`;
                                         window.location.href = url;
-                                }, 1000);
+                                }, 500);
                             }
                 }
             })

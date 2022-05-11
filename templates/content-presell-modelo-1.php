@@ -18,16 +18,20 @@
     $titulo_lista = get_post_meta( $post->ID, '_titulo_lista', true );
     $link = get_post_meta(get_the_ID(), '_link', true);
     $texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
-    $item_1 = get_post_meta(get_the_ID(), '_item_1', true );
-    $item_2 = get_post_meta(get_the_ID(), '_item_2', true );
-    $item_3 = get_post_meta(get_the_ID(), '_item_3', true );
-    $item_4 = get_post_meta(get_the_ID(), '_item_4', true );
-    $item_5 = get_post_meta(get_the_ID(), '_item_5', true );
-    $item_6 = get_post_meta(get_the_ID(), '_item_6', true );
-    $item_7 = get_post_meta(get_the_ID(), '_item_7', true );
-    $item_8 = get_post_meta(get_the_ID(), '_item_8', true );
-    $item_9 = get_post_meta(get_the_ID(), '_item_9', true );
-    $item_10 = get_post_meta(get_the_ID(), '_item_10', true );
+
+    $items = [
+		get_post_meta( $post->ID, '_item_1', true ),
+		get_post_meta( $post->ID, '_item_2', true ),
+		get_post_meta( $post->ID, '_item_3', true ),
+		get_post_meta( $post->ID, '_item_4', true ),
+		get_post_meta( $post->ID, '_item_5', true ),
+		get_post_meta( $post->ID, '_item_6', true ),
+		get_post_meta( $post->ID, '_item_7', true ),
+		get_post_meta( $post->ID, '_item_8', true ),
+		get_post_meta( $post->ID, '_item_9', true ),
+		get_post_meta( $post->ID, '_item_10', true )
+	];
+
     $exibirAnuncio = $_SERVER['REDIRECT_URL'] === '/presell/oportunidade-antes-de-ver-o-beneficio-liberado-nao-deixe-de-ver-esse-cartao-de-credito-inclusive-para-negativados-iti-itau/' ? true : false;
 
     $background = $tipo_post == 'BlackFriday' ? 'style="background: #000;"' : '';
@@ -84,7 +88,7 @@
         <?php } ?>
 
         <?php
-            if(!empty($item_1)): ?>
+            if(!empty($items)): ?>
                 <div class="lista-prsell">
                     <h3><?= $titulo_lista ?></h3>
 
@@ -93,16 +97,11 @@
 
                     <ul>
                         <?php 
-                            if(!empty($item_1)){echo "<li>{$item_1}</li>";} 
-                            if(!empty($item_2)){echo "<li>{$item_2}</li>";} 
-                            if(!empty($item_3)){echo "<li>{$item_3}</li>";} 
-                            if(!empty($item_4)){echo "<li>{$item_4}</li>";} 
-                            if(!empty($item_5)){echo "<li>{$item_5}</li>";} 
-                            if(!empty($item_6)){echo "<li>{$item_6}</li>";} 
-                            if(!empty($item_7)){echo "<li>{$item_7}</li>";} 
-                            if(!empty($item_8)){echo "<li>{$item_8}</li>";} 
-                            if(!empty($item_9)){echo "<li>{$item_9}</li>";} 
-                            if(!empty($item_10)){echo "<li>{$item_10}</li>";} 
+                            foreach($items as $item): 
+                                if(!empty($item)): ?>
+                                    <li><?php echo $item ?></li>
+                                <?php endif; 
+                            endforeach;
                         ?>
                     </ul>
                 </div>

@@ -20,16 +20,19 @@
     $texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
     $link_adicional = get_post_meta(get_the_ID(), '_link_adicional', true);
     $texto_link_adicional = get_post_meta( $post->ID, '_texto_link_adicional', true );
-    $item_1 = get_post_meta(get_the_ID(), '_item_1', true );
-    $item_2 = get_post_meta(get_the_ID(), '_item_2', true );
-    $item_3 = get_post_meta(get_the_ID(), '_item_3', true );
-    $item_4 = get_post_meta(get_the_ID(), '_item_4', true );
-    $item_5 = get_post_meta(get_the_ID(), '_item_5', true );
-    $item_6 = get_post_meta(get_the_ID(), '_item_6', true );
-    $item_7 = get_post_meta(get_the_ID(), '_item_7', true );
-    $item_8 = get_post_meta(get_the_ID(), '_item_8', true );
-    $item_9 = get_post_meta(get_the_ID(), '_item_9', true );
-    $item_10 = get_post_meta(get_the_ID(), '_item_10', true );
+
+    $items = [
+		get_post_meta( $post->ID, '_item_1', true ),
+		get_post_meta( $post->ID, '_item_2', true ),
+		get_post_meta( $post->ID, '_item_3', true ),
+		get_post_meta( $post->ID, '_item_4', true ),
+		get_post_meta( $post->ID, '_item_5', true ),
+		get_post_meta( $post->ID, '_item_6', true ),
+		get_post_meta( $post->ID, '_item_7', true ),
+		get_post_meta( $post->ID, '_item_8', true ),
+		get_post_meta( $post->ID, '_item_9', true ),
+		get_post_meta( $post->ID, '_item_10', true )
+	];
 
     $colecao_idiomas = array(
         'Português' => array(
@@ -89,20 +92,15 @@
         ?>
 
         <?php
-            if(!empty($item_1)): ?>
+            if(!empty($items)): ?>
                 <div class="list-desc">
                     <ul>
                     <?php 
-                        if(!empty($item_1)){echo "<li><i class='small material-icons'>check_circle</i>{$item_1}</li>";} 
-                        if(!empty($item_2)){echo "<li><i class='small material-icons'>check_circle</i>{$item_2}</li>";} 
-                        if(!empty($item_3)){echo "<li><i class='small material-icons'>check_circle</i>{$item_3}</li>";} 
-                        if(!empty($item_4)){echo "<li><i class='small material-icons'>check_circle</i>{$item_4}</li>";} 
-                        if(!empty($item_5)){echo "<li><i class='small material-icons'>check_circle</i>{$item_5}</li>";} 
-                        if(!empty($item_6)){echo "<li><i class='small material-icons'>check_circle</i>{$item_6}</li>";} 
-                        if(!empty($item_7)){echo "<li><i class='small material-icons'>check_circle</i>{$item_7}</li>";} 
-                        if(!empty($item_8)){echo "<li><i class='small material-icons'>check_circle</i>{$item_8}</li>";} 
-                        if(!empty($item_9)){echo "<li><i class='small material-icons'>check_circle</i>{$item_9}</li>";} 
-                        if(!empty($item_10)){echo "<li><i class='small material-icons'>check_circle</i>{$item_10}</li>";} 
+                        foreach($items as $item): 
+                            if(!empty($item)): ?>
+                                <li><i class='small material-icons'>check_circle</i><?php echo $item ?></li>
+                            <?php endif; 
+                        endforeach;
                     ?>
                     </ul>
                 </div>
