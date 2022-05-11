@@ -9,6 +9,7 @@
 ?>
 <?php
     
+    $utm_source = isset($_GET['utm_source']) ? $_GET['utm_source'] : '';
     $modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
     $idioma = get_post_meta( $post->ID, '_idioma', true );
     $tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
@@ -149,6 +150,19 @@
 				</div>
 			<?php endif;
 		?>
+
+        <!-- //// Botão CTA caso seja utm source = email //// -->
+        <section id="btn-cta" class="btn-cta <?php echo $utm_source == 'email' ? '' : 'display-none' ?>">
+            <a href="<?php echo $link ?>" titlle="Ver artigo">
+                <?php echo $texto_botao ?>
+            </a>
+        </section>
     </article>
 
-    <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/custom.js' ?>"></script>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri() . '/assets/js/custom.js' ?>"></script>
+    <script type="text/javascript">
+        getFields();
+        sendForm();
+        inputTefonoe();
+        exibirBotaoCta();
+    </script>

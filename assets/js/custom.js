@@ -1,9 +1,8 @@
 var count = 1;
 var countRes = 0;
-document.getElementById('loading').classList.add('loading-flex');
 
-window.onload = ()=>{
-    exibirPerguntas();
+// Alterar o input tefone de required para não required
+function inputTefonoe(){
     document.getElementById('telefone').addEventListener('input', ()=>{
         let telefone = document.getElementById('telefone');
     
@@ -15,9 +14,26 @@ window.onload = ()=>{
             telefone.classList.remove('telefone');
         }
     });
+}
 
-    getFields();
-    sendForm();
+function exibirBotaoCta(){
+    let btnCta = document.getElementById('btn-cta');
+    let mobile = document.documentElement.clientWidth || document.body.clientWidth;
+
+    if(mobile <= 600){
+        window.addEventListener('scroll', ()=>{
+            let doc = document.documentElement;
+            let percentPage = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight));
+            
+            if(percentPage >= 10){
+                btnCta.classList.remove('fadeOut');
+                btnCta.classList.add('fadeIn');
+            }else{
+                btnCta.classList.remove('fadeIn');
+                btnCta.classList.add('fadeOut');
+            }
+        })
+    }
 }
 
 function exibirPerguntas(){
@@ -26,7 +42,7 @@ function exibirPerguntas(){
     let tipoQuiz = document.getElementById('tipo_quiz').value;
     let protocol = window.location.protocol;
     let host = window.location.host;
-    let url = `${protocol}//${host}/api_mautic/quiz.json`;
+    let url = `${protocol}//${host}/formoney/api_mautic/quiz.json`;
     let quiz = document.getElementById('quiz');
     let dataPergunta = quiz.getAttribute('data-pergunta');
     let textPergunta = quiz.querySelector('h2');
@@ -56,7 +72,6 @@ function exibirPerguntas(){
 
 function proximaPergunta(){
     setTimeout(() => {
-        document.getElementById('loading').classList.remove('loading-flex');
         let respostas = document.querySelectorAll('.resposta');
 
         if(respostas.length !== 0){
@@ -248,4 +263,48 @@ function returnMessageTranslated(idioma, typeMessage){
     }
 
     return message[idioma][typeMessage];
+}
+
+// EXIT POPUP 
+function backRedirect() {
+    history.pushState({},"",location.href);
+    history.pushState({},"",location.href);
+    window.onpopstate = ()=>{
+        
+        oppenPopup();
+
+    };
+}
+
+function scroll(){
+    window.addEventListener('scroll', ()=>{
+        let doc = document.documentElement;
+        let percentPage = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight));
+
+        if((percentPage >= 75) && (percentPage <= 80)){
+            oppenPopup();
+        };
+    })
+}
+
+function oppenPopup(){
+    let exitPopup = document.getElementsByClassName('exit-popup')[0];
+    let bodyPopup = document.getElementsByClassName('body-popup')[0];
+
+        exitPopup.style.display = 'flex';
+        bodyPopup.classList.remove('closePopup');
+        bodyPopup.classList.add('oppenPopup');
+
+    function closePopup(exitPopup, bodyPopup) {
+        document.getElementById('close').addEventListener('click', ()=>{
+            bodyPopup.classList.remove('oppenPopup');
+            bodyPopup.classList.add('closePopup');
+    
+            setTimeout(()=>{
+                exitPopup.style.display = 'none';
+            }, 500);
+        });
+    }
+
+    closePopup(exitPopup, bodyPopup);
 }

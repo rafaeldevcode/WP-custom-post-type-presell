@@ -1,5 +1,13 @@
 @charset 'UTF-8';
 
+:root{
+    --color-main: #27B940;
+}
+
+.display-none{
+    display: none;
+}
+
 .conteudo-presell{
     width: 100%;
     max-width: 800px;
@@ -162,6 +170,37 @@
     line-height: 2;
 }
 
+/* //// BOTAO CTA //// */
+.btn-cta{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px var(--color-main);
+    transform: translateY(90px);
+    opacity: 0;
+}
+
+.btn-cta a{
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    background: var(--color-main);
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: 1px solid var(--color-main);
+    color: #FFF;
+    font-weight: bolder;
+    transition: all .4s;
+}
+
+.btn-cta a:hover{
+    background: #FFF;
+    color: var(--color-main);
+}
+
 @media only screen and (max-width: 650px){
     .conteudo-presell .titulo h2{
         font-size: 2em;
@@ -208,5 +247,35 @@
     }
     .conteudo-presell .titulo h2 {
         font-size: 1.7em;
+    }
+}
+
+.fadeIn{
+    animation: fadeIn .4s linear forwards;
+}
+
+.fadeOut{
+    animation: fadeOut .4s linear forwards;
+}
+
+@keyframes fadeIn {
+    0%{
+        transform: translateY(90px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(90px);
+        opacity: 0;
     }
 }
