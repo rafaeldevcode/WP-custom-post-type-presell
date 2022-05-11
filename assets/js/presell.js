@@ -39,11 +39,13 @@ function ocultarInputs(templateColecao){
         if(templateColecao[inputName] === false){
             // Ocultar div dos inputs radio caso seja formulario
             divInputRadio.id == 'opcao_apos_envio' ? divInputRadio.style.display = 'none' : ''; 
+            divInputRadio.id == 'tipo_quiz' ? divInputRadio.style.display = 'none' : ''; 
 
             inputs[i].parentNode.style.display = 'none';
         }else if(templateColecao[inputName] === true){
             // Exibir div dos inputs radio caso seja formulario
             divInputRadio.id == 'opcao_apos_envio' ? divInputRadio.style.display = 'block' : ''; 
+            divInputRadio.id == 'tipo_quiz' ? divInputRadio.style.display = 'block' : ''; 
             
             inputs[i].parentNode.style.display = 'block';
         }
@@ -68,6 +70,7 @@ function alterarLabel(template, templateColecao){
 function retornarTemplate(templateParam){
     const template = {
         Modelo_1: {
+            tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: false,
             headline: true,
@@ -94,6 +97,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_2: {
+            tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: true,
             headline: true,
@@ -120,6 +124,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_3: {
+            tipo_quiz: false,
             opcao_apos_envio: true,
             text_top: true,
             headline: true,
@@ -146,6 +151,34 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_4: {
+            tipo_quiz: false,
+            opcao_apos_envio: true,
+            text_top: true,
+            headline: true,
+            form_id: true,
+            titulo: true,
+            subtitulo: true,
+            headline_2: true,
+            titulo_lista: false,
+            headline_form: true,
+            botao_form: true,
+            link: true,
+            texto_botao: true,
+            link_adicional: true,
+            texto_link_adicional: true,
+            item_1: true,
+            item_2: true,
+            item_3: true,
+            item_4: true,
+            item_5: true,
+            item_6: true,
+            item_7: true,
+            item_8: true,
+            item_9: true,
+            item_10: true,
+        },
+        Modelo_5: {
+            tipo_quiz: true,
             opcao_apos_envio: true,
             text_top: true,
             headline: true,
@@ -172,6 +205,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Nenhum: {
+            tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: false,
             headline: false,
@@ -218,6 +252,10 @@ function retornarLabel(modelo)
             headline_2: 'Texto 2',
         },
         Modelo_4: {
+            headline: 'Texto 1',
+            headline_2: 'Texto 2',
+        },
+        Modelo_5: {
             headline: 'Texto 1',
             headline_2: 'Texto 2',
         }

@@ -57,6 +57,7 @@ function formoney_metabox_callback($post)
 {
 	$idioma = get_post_meta( $post->ID, '_idioma', true );
 	$opcao_apos_envio = get_post_meta( $post->ID, '_opcao_apos_envio', true );
+	$tipo_quiz = get_post_meta( $post->ID, '_tipo_quiz', true );
 	$tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
 	$modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
 	$form_id = get_post_meta( $post->ID, '_form_id', true );
@@ -120,6 +121,7 @@ function formoney_metabox_callback($post)
 					<option value="modelo_2">Modelo 2</option>
 					<option value="modelo_3">Modelo 3</option>
 					<option value="modelo_4">Modelo 4</option>
+					<option value="modelo_5">Modelo 5</option>
 				</select>
 			</div>
 		</div>
@@ -145,6 +147,25 @@ function formoney_metabox_callback($post)
 					<label>
 						Exibir botões
 						<input type="radio" name="opcao_apos_envio" <?= ($opcao_apos_envio == 'exibir_botoes')  || (empty($opcao_apos_envio)) ? 'checked' : '' ?> value="exibir_botoes">
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="inputs-radios" id="tipo_quiz">
+			<h4>Opções de perguntas do quiz</h4>
+			<div>
+				<div>
+					<label>
+						Cartão
+						<input type="radio" name="tipo_quiz" <?= ($tipo_quiz == 'cartao')  || (empty($tipo_quiz)) ? 'checked' : '' ?> value="cartao">
+					</label>
+				</div>
+
+				<div>
+					<label>
+						Empréstimo
+						<input type="radio" name="tipo_quiz" <?= $tipo_quiz == 'emprestimo' ? 'checked' : '' ?> value="emprestimo">
 					</label>
 				</div>
 			</div>
@@ -246,6 +267,7 @@ function formoney_salvar_dados_meta_box($post_id)
 {
 	foreach($_POST as $key=>$value){
 		if($key !== 'tipo_post'
+		&&$key !== 'tipo_quiz'
 		&& $key !== 'opcao_apos_envio'
 		&& $key !== 'idioma'
 		&& $key !== 'form_id'

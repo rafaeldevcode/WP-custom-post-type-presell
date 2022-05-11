@@ -1,15 +1,89 @@
-document.getElementById('telefone').addEventListener('input', ()=>{
-    let telefone = document.getElementById('telefone');
+var count = 1;
+var countRes = 0;
+document.getElementById('loading').classList.add('loading-flex');
 
-    if(telefone.value == ''){
-        telefone.required = false;
-        telefone.classList.add('telefone');
-    }else{
-        telefone.required = true;
-        telefone.classList.remove('telefone');
-    }
-})
+window.onload = ()=>{
+    exibirPerguntas();
+    document.getElementById('telefone').addEventListener('input', ()=>{
+        let telefone = document.getElementById('telefone');
+    
+        if(telefone.value == ''){
+            telefone.required = false;
+            telefone.classList.add('telefone');
+        }else{
+            telefone.required = true;
+            telefone.classList.remove('telefone');
+        }
+    });
 
+    getFields();
+    sendForm();
+}
+
+function exibirPerguntas(){
+    count++
+    let idioma = document.getElementById('idioma').value;
+    let tipoQuiz = document.getElementById('tipo_quiz').value;
+    let protocol = window.location.protocol;
+    let host = window.location.host;
+    let url = `${protocol}//${host}/api_mautic/quiz.json`;
+    let quiz = document.getElementById('quiz');
+    let dataPergunta = quiz.getAttribute('data-pergunta');
+    let textPergunta = quiz.querySelector('h2');
+    let ul = quiz.querySelector('ul');
+
+    // Fetch para pegar as perguntas e respostas
+    fetch(url)
+    .then(res => { return res.json() })
+    .then(res => {
+        const quizRes = res.quiz[idioma][tipoQuiz];
+            countRes = quizRes.length;
+
+            textPergunta.innerHTML = quizRes[dataPergunta].pergunta;
+
+            for (let i = 1; i<= quizRes.length; i++) {
+                let li = document.createElement('li');
+                    li.setAttribute('class', 'resposta slid');
+                    li.innerHTML = quizRes[dataPergunta].respostas[i];
+
+                    ul.appendChild(li);
+            }
+    });
+
+    quiz.setAttribute('data-pergunta', `pergunta_${count}`);
+    proximaPergunta();
+}
+
+function proximaPergunta(){
+    setTimeout(() => {
+        document.getElementById('loading').classList.remove('loading-flex');
+        let respostas = document.querySelectorAll('.resposta');
+
+        if(respostas.length !== 0){
+            for (let i = 0; i < respostas.length; i++) {
+                respostas[i].addEventListener('click', ()=>{
+                    respostas.forEach(item => {
+                        item.remove();
+                    });
+                    
+                    // Ocultar as perguntas e xibir formulário
+                    if(count == countRes+1){
+                        const form = document.getElementById('form');
+                        const quiz = document.getElementById('quiz');
+                            form.classList.remove('display-none');
+                            form.classList.add('slid');
+        
+                            quiz.classList.add('display-none');
+                    }else{
+                        exibirPerguntas();
+                    }
+                });
+            }
+        } 
+    }, 1000);
+}
+
+// pegar todos os inputs requireds
 function getFields(){
     let fields = document.querySelectorAll('[required]');
 
@@ -23,6 +97,7 @@ function getFields(){
     }
 }
 
+// Validas os inputs
 function validateField(field){
     function verifyError(){
         let foundError = false;
@@ -172,6 +247,3 @@ function returnMessageTranslated(idioma, typeMessage){
 
     return message[idioma][typeMessage];
 }
-
-getFields();
-sendForm();
