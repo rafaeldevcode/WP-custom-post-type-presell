@@ -42,7 +42,7 @@ function exibirPerguntas(){
     let tipoQuiz = document.getElementById('tipo_quiz').value;
     let protocol = window.location.protocol;
     let host = window.location.host;
-    let url = `${protocol}//${host}/formoney/api_mautic/quiz.json`;
+    let url = `${protocol}//${host}/api_mautic/quiz.json`;
     let quiz = document.getElementById('quiz');
     let dataPergunta = quiz.getAttribute('data-pergunta');
     let textPergunta = quiz.querySelector('h2');
