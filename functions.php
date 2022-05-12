@@ -86,6 +86,15 @@ function formoney_metabox_callback($post)
 		get_post_meta( $post->ID, '_item_9', true ),
 		get_post_meta( $post->ID, '_item_10', true )
 	];
+
+	$modelos = [
+		'modelo_1' => 'Modelo 1',
+		'modelo_2' => 'Modelo 2',
+		'modelo_3' => 'Modelo 3 / 2 Banners',
+		'modelo_4' => 'Modelo 4 / Captura',
+		'modelo_5' => 'Modelo 5 / Quiz + Captura',
+	];
+	
 	?>
 
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell.css' ?>">
@@ -116,12 +125,12 @@ function formoney_metabox_callback($post)
 			<div class="select-opt">
 				<label for="modelo_presell">Selecione um modelo:</label>
 				<select name="modelo_presell" id="modelo_presell" style="width: 150px" onChange="javascript:vericarSelect()">
-					<option value="<?= $modelo_presell ?>"><?= ucfirst(str_replace('_', ' ', $modelo_presell)) ?></option>
+					<option value="<?= $modelo_presell ?>"><?= $modelos[$modelo_presell] ?></option>
 					<option value="modelo_1">Modelo 1</option>
 					<option value="modelo_2">Modelo 2</option>
-					<option value="modelo_3">Modelo 3</option>
-					<option value="modelo_4">Modelo 4</option>
-					<option value="modelo_5">Modelo 5</option>
+					<option value="modelo_3">Modelo 3 / 2 Banners</option>
+					<option value="modelo_4">Modelo 4 / Captura</option>
+					<option value="modelo_5">Modelo 5 / Quiz + Captura</option>
 				</select>
 			</div>
 		</div>

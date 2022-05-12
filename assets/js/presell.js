@@ -9,7 +9,9 @@ function verificarModeloSelecionado(){
             select.options[select.selectedIndex].text = 'Modelo 1';
             ocultarInputs(templateColecao);
     }else{
-        template = select.options[select.selectedIndex].text.replace(' ', '_');
+        let pattern = /\s(.*)/;
+
+        template = select.options[select.selectedIndex].text.replace(' ', '_').replace(pattern, '');
             let templateColecao = retornarTemplate(template);
             ocultarInputs(templateColecao);
             alterarLabel(template, templateColecao)
@@ -20,9 +22,10 @@ verificarModeloSelecionado();
 // Verificar qual valor do selecionado
 function vericarSelect(){
     let template = 'Nenhum';
+    let pattern = /\s(.*)/;
 
         if(select.value != ''){
-            template = select.options[select.selectedIndex].text.replace(' ', '_');
+            template = select.options[select.selectedIndex].text.replace(' ', '_').replace(pattern, '');
         }
 
         let templateColecao = retornarTemplate(template);
@@ -125,7 +128,7 @@ function retornarTemplate(templateParam){
         },
         Modelo_3: {
             tipo_quiz: false,
-            opcao_apos_envio: true,
+            opcao_apos_envio: false,
             text_top: true,
             headline: true,
             form_id: true,
