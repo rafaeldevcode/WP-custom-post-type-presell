@@ -135,7 +135,7 @@
 		?>
 
         <!-- //// Botão CTA caso seja utm source = email //// -->
-        <section id="btn-cta" class="btn-cta <?php echo ($utm_source == 'email' || $utm_source == 'email007' || $utm_source == 'email-007') ? '' : 'display-none' ?>">
+        <section id="btn-cta" class="btn-cta <?php echo ($utm_source == 'email' || $utm_source == 'email007' || $utm_source == 'email-007' || $utm_source == 'facebook') ? '' : 'display-none' ?>">
             <a href="<?php echo $link ?>" titlle="Ver artigo">
                 <?php echo $texto_botao ?>
             </a>
