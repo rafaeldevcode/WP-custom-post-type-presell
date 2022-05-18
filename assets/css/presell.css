@@ -13,8 +13,10 @@
 }
 .presell-inputs-group-list-title,
 .content-presell-titulos{
-    width: 96%;
-    margin: 10px 0;
+    box-shadow: 0px 0px 5px #2271B1;
+    max-width: 100%;
+    padding: 10px;
+    border-radius: 3px;
 }
 .content-presell-titulos > div{
     margin: 10px 0;

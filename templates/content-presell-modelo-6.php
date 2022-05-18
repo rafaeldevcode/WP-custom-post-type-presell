@@ -13,6 +13,7 @@
     $modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
     $idioma = get_post_meta( $post->ID, '_idioma', true );
     $tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
+    $iframe = get_post_meta( $post->ID, '_iframe', true );
     $form_id = get_post_meta( $post->ID, '_form_id', true );
     $text_top = get_post_meta( $post->ID, '_text_top', true );
     $titulo = get_post_meta( $post->ID, '_titulo', true );
@@ -53,19 +54,28 @@
 ?>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell-m2.css' ?>">
+    <style>
+        /* // Esconder o cabeçalho e o footer exclusivo nessa presell */
+        .jeg_navbar_mobile_wrapper{
+            display: none;
+        }
+    </style>
     
     <article id="post-<?php the_ID(); ?>" class="conteudo-presell">
-        <div class="titulos">
-            <p><?php echo $text_top ?></p>
-            <h1><?php echo $titulo ?></h1>
-            <h2><?php echo $subtitulo ?></h2>
-            <span><?php echo $colecao_idiomas[$idioma]['label_progress'] ?></span>
-        </div>
+        <section class="presell-video">
+            <span class="presell-video-titulo"><?php echo $titulo ?></span>
+            <iframe class="presell-video-iframe" src="<?php echo $iframe ?>"></iframe>
+        </section>
 
         <!-- Banner Desktop -->
         <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
         <!-- Banner Mobile -->
         <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
+
+        <div class="titulos">
+            <h2><?php echo $subtitulo ?></h2>
+            <span><?php echo $colecao_idiomas[$idioma]['label_progress'] ?></span>
+        </div>
 
         <div class="card-desc">
             <div class="card">
@@ -85,9 +95,6 @@
                 ?>
             </div>
         </div>
-
-        <!-- Exibir formulario -->
-        <?php get_template_part( 'templates/components/content', 'formulario'); ?>
 
         <?php
             if(!empty($item_1)): ?>
@@ -139,8 +146,5 @@
 
     <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/custom.js' ?>"></script>
     <script type="text/javascript">
-        getFields();
-        sendForm();
-        inputTefonoe();
         exibirBotaoCta();
     </script>

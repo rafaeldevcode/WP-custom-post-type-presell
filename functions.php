@@ -61,6 +61,7 @@ function formoney_metabox_callback($post)
 	$tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
 	$modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
 	$form_id = get_post_meta( $post->ID, '_form_id', true );
+	$iframe = get_post_meta( $post->ID, '_iframe', true );
 	$text_top = get_post_meta( $post->ID, '_text_top', true );
 	$titulo = get_post_meta( $post->ID, '_titulo', true );
 	$subtitulo = get_post_meta( $post->ID, '_subtitulo', true );
@@ -93,6 +94,7 @@ function formoney_metabox_callback($post)
 		'modelo_3' => 'Modelo 3 / 2 Banners',
 		'modelo_4' => 'Modelo 4 / Captura',
 		'modelo_5' => 'Modelo 5 / Quiz + Captura',
+		'modelo_6' => 'Modelo 6 / Iframe',
 	];
 	
 	?>
@@ -131,6 +133,7 @@ function formoney_metabox_callback($post)
 					<option value="modelo_3">Modelo 3 / 2 Banners</option>
 					<option value="modelo_4">Modelo 4 / Captura</option>
 					<option value="modelo_5">Modelo 5 / Quiz + Captura</option>
+					<option value="modelo_6">Modelo 6 / Iframe</option>
 				</select>
 			</div>
 		</div>
@@ -194,6 +197,11 @@ function formoney_metabox_callback($post)
 			<div style="margin-top: 10px;">
 				<label for="headline_1">Subtitulo</label>
 				<input class="input-presell" name="subtitulo" type="text" value="<?= $subtitulo; ?>">
+			</div>
+
+			<div style="margin-top: 10px;">
+				<label for="iframe">Link do vídeo</label>
+				<input class="input-presell" name="iframe" type="text" value="<?= $iframe; ?>">
 			</div>
 		</div>
 
@@ -279,6 +287,7 @@ function formoney_salvar_dados_meta_box($post_id)
 		&&$key !== 'tipo_quiz'
 		&& $key !== 'opcao_apos_envio'
 		&& $key !== 'idioma'
+		&& $key !== 'iframe'
 		&& $key !== 'form_id'
 		&& $key !== 'titulo'
 		&& $key !== 'headline'
