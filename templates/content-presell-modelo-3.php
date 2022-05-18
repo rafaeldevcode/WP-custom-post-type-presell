@@ -86,9 +86,6 @@
             </div>
         </div>
 
-        <!-- Exibir formulario caso seja Modelo 2 + Formulário -->
-        <?php get_template_part( 'templates/components/content', 'formulario'); ?>
-
         <?php
             if(!empty($item_1)): ?>
                 <div class="text">
@@ -144,8 +141,5 @@
 
     <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/custom.js' ?>"></script>
     <script type="text/javascript">
-        getFields();
-        sendForm();
-        inputTefonoe();
         exibirBotaoCta();
     </script>

@@ -231,7 +231,7 @@ function formoney_metabox_callback($post)
 			</div>
 		</div>
 
-		<div class="content-presell-headlines">
+		<div class="content-presell-headlines" id="formulario">
 			<div class="content-presell-headline">
 				<label for="headline_form">Headline do formulário</label>
 				<input class="input-presell" name="headline_form" type="text" value="<?= $headline_form; ?>">

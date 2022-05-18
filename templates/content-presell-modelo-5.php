@@ -160,4 +160,5 @@
         sendForm();
         inputTefonoe();
         exibirBotaoCta();
+		exibirPerguntas();
     </script>

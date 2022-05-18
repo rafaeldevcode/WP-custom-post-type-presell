@@ -10,8 +10,8 @@ function verificarModeloSelecionado(){
             ocultarInputs(templateColecao);
     }else{
         let pattern = /\s(.*)/;
-
         template = select.options[select.selectedIndex].text.replace(' ', '_').replace(pattern, '');
+
             let templateColecao = retornarTemplate(template);
             ocultarInputs(templateColecao);
             alterarLabel(template, templateColecao)
@@ -38,17 +38,20 @@ function ocultarInputs(templateColecao){
     for (let i = 0; i < inputs.length; i++) {
         let inputName = inputs[i].name;
         let divInputRadio = inputs[i].parentNode.parentNode.parentNode.parentNode;
+        let formulario = inputs[i].parentNode.parentNode;
 
         if(templateColecao[inputName] === false){
             // Ocultar div dos inputs radio caso seja formulario
             divInputRadio.id == 'opcao_apos_envio' ? divInputRadio.style.display = 'none' : ''; 
             divInputRadio.id == 'tipo_quiz' ? divInputRadio.style.display = 'none' : ''; 
+            formulario.id == 'formulario' ? formulario.style.display = 'none' : '';
 
             inputs[i].parentNode.style.display = 'none';
         }else if(templateColecao[inputName] === true){
             // Exibir div dos inputs radio caso seja formulario
             divInputRadio.id == 'opcao_apos_envio' ? divInputRadio.style.display = 'block' : ''; 
             divInputRadio.id == 'tipo_quiz' ? divInputRadio.style.display = 'block' : ''; 
+            formulario.id == 'formulario' ? formulario.style.display = 'flex' : '';
             
             inputs[i].parentNode.style.display = 'block';
         }
@@ -71,6 +74,8 @@ function alterarLabel(template, templateColecao){
 
 // Retornar os inputs que o modelo selecionado tem
 function retornarTemplate(templateParam){
+
+
     const template = {
         Modelo_1: {
             tipo_quiz: false,
@@ -131,13 +136,13 @@ function retornarTemplate(templateParam){
             opcao_apos_envio: false,
             text_top: true,
             headline: true,
-            form_id: true,
+            form_id: false,
             titulo: true,
             subtitulo: true,
             headline_2: true,
             titulo_lista: false,
-            headline_form: true,
-            botao_form: true,
+            headline_form: false,
+            botao_form: false,
             link: true,
             texto_botao: true,
             link_adicional: true,
