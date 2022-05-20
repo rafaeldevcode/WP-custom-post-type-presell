@@ -18,9 +18,9 @@ function inputTefonoe(){
 
 function exibirBotaoCta(){
     let btnCta = document.getElementById('btn-cta');
-    let mobile = document.documentElement.clientWidth || document.body.clientWidth;
+    let mobile = parseInt(screen.width);
 
-    if(mobile <= 600){
+    if(mobile < 601){
         window.addEventListener('scroll', ()=>{
             let doc = document.documentElement;
             let percentPage = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight));
