@@ -30,15 +30,6 @@
 ?>
 
 <section class="formulario-presell" id="formulario-presell">
-    <?php
-        if($modelo_presell == 'modelo_8'):
-            // Banner Desktop 
-            if (function_exists ('adinserter')) echo adinserter (6);
-            // Banner Mobile
-            if (function_exists ('adinserter')) echo adinserter (17);
-        endif;
-    ?>
-
     <div class="loading" id="loading"><div></div></div>
 
     <div <?php echo( $modelo_presell == 'modelo_5') || ($modelo_presell == 'modelo_8') ? 'class="display-none"' : '' ?> id="form">
