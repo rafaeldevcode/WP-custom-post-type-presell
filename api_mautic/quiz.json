@@ -43,11 +43,11 @@
         "Espanhol": {
             "cartao": {
                 "pergunta_1": {
-                    "pergunta": "¿Cuál es el límite ideal de la tarjeta para ti?",
+                    "pergunta": "Seleccione un límite para su tarjeta",
                     "respostas": {
-                        "1": "$ 15.000",
-                        "2": "$ 35.000",
-                        "3": "$ 50.000"
+                        "1": "$ 15,000",
+                        "2": "$ 35,000",
+                        "3": "$ 50,000"
                     }
                 },
                 "pergunta_2": {
