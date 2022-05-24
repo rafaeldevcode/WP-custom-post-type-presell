@@ -52,26 +52,9 @@
 ?>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell-m2.css' ?>">
-    <style>
-        .titulos{
-            margin-top: 20px;
-        }
-        .titulos p{
-            margin-bottom: 10px;
-        }
-        .titulos h2{
-            margin-bottom: 10px;
-        }
-        .card-desc{
-            margin: 10px auto;
-        }
-        .text{
-            margin: 10px auto;
-        }
-    </style>
     
     <article id="post-<?php the_ID(); ?>" class="conteudo-presell">
-        <div class="titulos">
+        <div class="titulos titulos-progresso">
             <p><?php echo $text_top ?></p>
             <h1><?php echo $titulo ?></h1>
             <h2><?php echo $subtitulo ?></h2>

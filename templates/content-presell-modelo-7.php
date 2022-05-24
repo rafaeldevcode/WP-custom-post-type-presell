@@ -9,10 +9,8 @@
 ?>
 <?php
     
-    $modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
     $idioma = get_post_meta( $post->ID, '_idioma', true );
     $tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
-    $form_id = get_post_meta( $post->ID, '_form_id', true );
     $text_top = get_post_meta( $post->ID, '_text_top', true );
     $titulo = get_post_meta( $post->ID, '_titulo', true );
     $subtitulo = get_post_meta( $post->ID, '_subtitulo', true );
@@ -36,19 +34,19 @@
 		get_post_meta( $post->ID, '_item_10', true )
 	];
 
-    $colecao_idiomas = [
-        'Português' =>[
+    $colecao_idiomas = array(
+        'Português' => array(
             'label_progress' => 'Estamos quase lá',
-        ],
+        ),
 
-        'Espanhol' => [
+        'Espanhol' => array(
             'label_progress' => '¡Estamos casi alli!',
-        ],
+        ),
 
-        'Inglês' => [
+        'Inglês' => array(
             'label_progress' => 'We are almost there!',
-        ]
-    ];
+        )
+    );
 ?>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell-m2.css' ?>">
@@ -61,11 +59,6 @@
             <span><?php echo $colecao_idiomas[$idioma]['label_progress'] ?></span>
         </div>
 
-        <!-- Banner Desktop -->
-        <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
-        <!-- Banner Mobile -->
-        <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
-
         <div class="card-desc">
             <div class="card">
                 <?php the_post_thumbnail() ?>
@@ -77,16 +70,13 @@
                 </div>
                 <?php
                     if($tipo_post !== 'Sem Botões'){ ?>
-                        <div class="btn-presell ocultar-botao">
+                        <div class="btn-presell ">
                             <a class="link-btn" href="<?php echo $link ?>" title="Link"><?php echo $texto_botao ?></a>
                         </div>
                     <?php } 
                 ?>
             </div>
         </div>
-
-        <!-- Exibir formulario -->
-        <?php get_template_part( 'templates/components/content', 'formulario'); ?>
 
         <?php
             if(!empty($item_1)): ?>
@@ -114,7 +104,7 @@
 
         <?php
             if($tipo_post === 'Dois Botões'){ ?>
-                <div class="btn-presell btn-bottom ocultar-botao">
+                <div class="btn-presell btn-bottom">
                     <a class="link-btn" href="<?php echo $link ?>" title="Link"><?php echo $texto_botao ?></a>
                 </div>
             <?php } 
@@ -135,8 +125,5 @@
 
     <script type="text/javascript" src="<?php echo get_template_directory_uri() . '-child/assets/js/custom.js' ?>"></script>
     <script type="text/javascript">
-        getFields();
-        sendForm();
-        inputTefonoe();
         exibirBotaoCta();
     </script>

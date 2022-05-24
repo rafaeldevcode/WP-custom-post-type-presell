@@ -52,7 +52,7 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell-m2.css' ?>">
     
     <article id="post-<?php the_ID(); ?>" class="conteudo-presell">
-        <div class="titulos">
+        <div class="titulos titulos-progresso">
             <p><?php echo $text_top ?></p>
             <h1><?php echo $titulo ?></h1>
             <h2><?php echo $subtitulo ?></h2>

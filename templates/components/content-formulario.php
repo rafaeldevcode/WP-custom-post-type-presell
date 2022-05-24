@@ -30,9 +30,18 @@
 ?>
 
 <section class="formulario-presell" id="formulario-presell">
+    <?php
+        if($modelo_presell == 'modelo_8'):
+            // Banner Desktop 
+            if (function_exists ('adinserter')) echo adinserter (6);
+            // Banner Mobile
+            if (function_exists ('adinserter')) echo adinserter (17);
+        endif;
+    ?>
+
     <div class="loading" id="loading"><div></div></div>
 
-    <div <?php echo $modelo_presell == 'modelo_5' ? 'class="display-none"' : '' ?> id="form">
+    <div <?php echo( $modelo_presell == 'modelo_5') || ($modelo_presell == 'modelo_8') ? 'class="display-none"' : '' ?> id="form">
         <h4><?php echo $headline_form ?></h4>
         <form action="?" method="POST" id="formulario">
             <input type="hidden" id="url" name="url" value="<?php echo get_site_url() . '/api_mautic/send_api.php' ?>">
@@ -68,7 +77,7 @@
         </form>
     </div>
 
-    <div class="quiz <?php echo $modelo_presell == 'modelo_5' ? '' : 'display-none' ?>" id="quiz" data-pergunta="pergunta_1">
+    <div class="quiz <?php echo ($modelo_presell == 'modelo_5') || ($modelo_presell == 'modelo_8') ? '' : 'display-none' ?>" id="quiz" data-pergunta="pergunta_1">
         <div class="pergunta">
             <h2></h2>
         </div>

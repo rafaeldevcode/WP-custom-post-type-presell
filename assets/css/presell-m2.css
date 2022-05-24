@@ -18,11 +18,15 @@
 .titulos{
     text-align: center;
     position: relative;
-    border-bottom: 13px solid rgb(165, 165, 165);
     margin: 20px 0;
 }
 
-.titulos::before{
+.titulos-progresso{
+    position: relative;
+    border-bottom: 13px solid rgb(165, 165, 165);
+}
+
+.titulos-progresso::before{
     content: '';
     position: absolute;
     bottom: -13px;
@@ -32,7 +36,7 @@
     background: var(--color-main);
 }
 
-.titulos::after{
+.titulos-progresso::after{
     content: '70%';
     font-weight: bolder;
     position: absolute;
@@ -367,8 +371,9 @@
     padding: 30px 5px;
     background: rgb(255, 255, 255);
     box-shadow: 0px 0px 5px var(--color-main);
-    transform: translateY(90px);
-    opacity: 0;
+    /* transform: translateY(90px);
+    opacity: 0; */
+    display: none;
     z-index: 100;
 }
 
@@ -444,13 +449,11 @@
 }
 
 .fadeIn{
-    transform: translateY(0);
-    opacity: 1;
+    display: block !important;
 }
 
 .fadeOut{
-    transform: translateY(90px);
-    opacity: 0;
+    display: none !important;
 }
 
 @keyframes mostrarErro {

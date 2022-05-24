@@ -95,6 +95,8 @@ function formoney_metabox_callback($post)
 		'modelo_4' => 'Modelo 4 / Captura',
 		'modelo_5' => 'Modelo 5 / Quiz + Captura',
 		'modelo_6' => 'Modelo 6 / Iframe',
+		'modelo_7' => 'Modelo 7 / Botão fixo e sem banner',
+		'modelo_8' => 'Modelo 8 / Banner e pergunta na mesma tela'
 	];
 	
 	?>
@@ -134,6 +136,8 @@ function formoney_metabox_callback($post)
 					<option value="modelo_4">Modelo 4 / Captura</option>
 					<option value="modelo_5">Modelo 5 / Quiz + Captura</option>
 					<option value="modelo_6">Modelo 6 / Iframe</option>
+					<option value="modelo_7">Modelo 7 / Botão fixo e sem banner</option>
+					<option value="modelo_8">Modelo 8 / Banner e pergunta na mesma tela</option>
 				</select>
 			</div>
 		</div>

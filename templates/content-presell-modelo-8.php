@@ -8,7 +8,7 @@
  */
 ?>
 <?php
-    
+
     $modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
     $idioma = get_post_meta( $post->ID, '_idioma', true );
     $tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
@@ -23,7 +23,7 @@
     $link_adicional = get_post_meta(get_the_ID(), '_link_adicional', true);
     $texto_link_adicional = get_post_meta( $post->ID, '_texto_link_adicional', true );
 
-    $items = [
+	$items = [
 		get_post_meta( $post->ID, '_item_1', true ),
 		get_post_meta( $post->ID, '_item_2', true ),
 		get_post_meta( $post->ID, '_item_3', true ),
@@ -35,36 +35,22 @@
 		get_post_meta( $post->ID, '_item_9', true ),
 		get_post_meta( $post->ID, '_item_10', true )
 	];
-
-    $colecao_idiomas = [
-        'Português' =>[
-            'label_progress' => 'Estamos quase lá',
-        ],
-
-        'Espanhol' => [
-            'label_progress' => '¡Estamos casi alli!',
-        ],
-
-        'Inglês' => [
-            'label_progress' => 'We are almost there!',
-        ]
-    ];
 ?>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell-m2.css' ?>">
     
     <article id="post-<?php the_ID(); ?>" class="conteudo-presell">
-        <div class="titulos titulos-progresso">
-            <p><?php echo $text_top ?></p>
-            <h1><?php echo $titulo ?></h1>
+        <div class="titulos">
             <h2><?php echo $subtitulo ?></h2>
-            <span><?php echo $colecao_idiomas[$idioma]['label_progress'] ?></span>
         </div>
 
         <!-- Banner Desktop -->
         <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
         <!-- Banner Mobile -->
         <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
+
+        <!-- Exibir formulario -->
+        <?php get_template_part( 'templates/components/content', 'formulario'); ?>
 
         <div class="card-desc">
             <div class="card">
@@ -84,9 +70,6 @@
                 ?>
             </div>
         </div>
-
-        <!-- Exibir formulario -->
-        <?php get_template_part( 'templates/components/content', 'formulario'); ?>
 
         <?php
             if(!empty($item_1)): ?>
@@ -139,4 +122,5 @@
         sendForm();
         inputTefonoe();
         exibirBotaoCta();
+		exibirPerguntas();
     </script>
