@@ -55,8 +55,10 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell-m2.css' ?>">
     <style>
         /* // Esconder o cabeçalho e o footer exclusivo nessa presell */
-        .jeg_navbar_mobile_wrapper{
-            display: none;
+        .jeg_navbar_mobile_wrapper,
+        .jeg_footer_container,
+        .jeg_header{
+            display: none !important;
         }
     </style>
     

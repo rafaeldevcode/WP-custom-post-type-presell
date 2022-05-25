@@ -38,6 +38,14 @@
 ?>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '-child/assets/css/presell-m2.css' ?>">
+    <style>
+        /* // Esconder o cabeçalho e o footer exclusivo nessa presell */
+        .jeg_navbar_mobile_wrapper,
+        .jeg_footer_container,
+        .jeg_header{
+            display: none !important;
+        }
+    </style>
     
     <article id="post-<?php the_ID(); ?>" class="conteudo-presell">
         <div class="titulos">

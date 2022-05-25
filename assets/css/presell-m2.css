@@ -15,10 +15,11 @@
     padding: 10px;
 }
 
-.titulos{
+.titulos,
+.titulos-progresso{
     text-align: center;
     position: relative;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .titulos-progresso{
@@ -46,13 +47,13 @@
     font-size: .9em;
 }
 
-.titulos p{
+.titulos-progresso p{
     color: rgb(104, 104, 104);
     font-size: 1.1em;
     margin: 10px 0;
 }
 
-.titulos h1{
+.titulos-progresso h1{
     font-size: 1.6em;
     font-weight: 600;
     max-width: 700px;
@@ -60,7 +61,7 @@
     margin-bottom: 20px;
 }
 
-.titulos h2{
+.titulos-progresso h2{
     font-size: 1.1em;
     font-weight: 600;
     max-width: 700px;
@@ -69,7 +70,16 @@
     color: var(--color-main);
 }
 
-.titulos span{
+.titulos h2{
+    font-size: 1.4em;
+    font-weight: 600;
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 10px;
+    color: var(--color-main);
+}
+
+.titulos-progresso span{
     font-weight: bolder;
     font-size: 1em;
     text-align: left;
