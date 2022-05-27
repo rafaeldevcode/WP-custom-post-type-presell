@@ -42,7 +42,7 @@ function exibirPerguntas(){
     let tipoQuiz = document.getElementById('tipo_quiz').value;
     let protocol = window.location.protocol;
     let host = window.location.host;
-    let url = `${protocol}//${host}/api_mautic/quiz.json`;
+    let url = `${protocol}//${host}/formoney/api_mautic/quiz.json`;
     let quiz = document.getElementById('quiz');
     let dataPergunta = quiz.getAttribute('data-pergunta');
     let textPergunta = quiz.querySelector('h2');
@@ -197,12 +197,15 @@ function sendForm(){
             let opcaoAposEnvio = document.getElementById('opcao_apos_envio').value;
             let formData = new FormData();
             let urlAtual = window.location.href;
+            let source = new URLSearchParams(window.location.search).get('utm_source');
 
 			formData.append('nome', nome);
 			formData.append('email', email);
 			formData.append('telefone', telefone);
 			formData.append('formId', formId);
             formData.append('urlAtual', urlAtual);
+            formData.append('idioma', idioma);
+            formData.append('source', source);
 
             fetch(url, {
                 method: 'POST',

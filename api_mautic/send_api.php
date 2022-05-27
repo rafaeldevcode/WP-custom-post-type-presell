@@ -1,42 +1,126 @@
 <?php
 
-$dia = date("m.d.y");
-$response = str_replace(["\n", "\r", " "], '', sendApi());
-logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE: {$response}]", 'INFO', "Logs/register-{$dia}.log");
+sendApi($_POST);
 
-function sendApi(): string
+function sendApi(array $data): void
 {
-    $data = $_POST;
-    $formId = $data['formId'];
+    $day = date("m.d.y");
 
-    /** * Push data to a Mautic form
-     * @param array $data
-     *  @param integer $formId
-     * 'mauticform[formId]' => 1,
-     * 'mauticform[return]' => '',
-     * 'mauticform[formName]' => 'formoney'
-     */
+    $responseMautic = sendContactMautic($data);
 
-    $url = "https://mautic.formoney.com.br/form/submit?formId={$formId}";
+    if($data['idioma'] === 'Português'):
+        if($data['source'] === 'facebook'):
+            $responsePubzap = sendMessagePubzap($data);
+            logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-PUBZAP: {$responsePubzap}]", 'INFO', "Logs/register-{$day}.log");
+        endif;
 
-    $data = [
-        'mauticform' => [
-            'formId' => $data['formId'],
-            'return' => '',
-            'nome' => $data['nome'],
-            'email' => $data['email'],
-            'celular' => $data['telefone'],
-        ],
+        $responseAkna = str_replace(["\n"], '', sendContactAkna($data));
+        logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-AKNA: {$responseAkna}]", 'INFO', "Logs/register-{$day}.log");
+    endif;
+
+    logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-MAUTIC: {$responseMautic}]", 'INFO', "Logs/register-{$day}.log");
+}
+
+// Integração com AKNA
+function sendContactAkna(array $data): string
+{
+    $dataAkna = [
+        'User' => 'api@femglobalbrands.com.br',
+        'Pass' => '1ba5d79d64d6c2c3aa10a6d5261488c0',
+        'XML'  => "<main>
+            <emkt trans=\"11.05\">
+            <nome>Lista Fluxo Principal</nome>
+            <destinatario>
+                <email>{$data['email']}</email>
+                <nome>{$data['nome']}</nome>
+                <celular>{$data['telefone']}</celular>
+            </destinatario>
+            </emkt>
+        </main>"
     ];
 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-    // receive server response ...
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $response = curl_exec($ch);
-    curl_close($ch);
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL            => 'http://app.akna.com.br/emkt/int/integracao.php',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING       => '',
+        CURLOPT_MAXREDIRS      => 10,
+        CURLOPT_TIMEOUT        => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST  => 'POST',
+        CURLOPT_POSTFIELDS     => $dataAkna,
+        ]);
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        return $response;
+}
+
+// Integração com MAUTIC
+function sendContactMautic(array $data): string
+{
+    $dataMautic = [
+        'mauticform'  => [
+            'formId'  => $data['formId'],
+            'return'  => '',
+            'nome'    => $data['nome'],
+            'email'   => $data['email'],
+            'celular' => $data['telefone'],
+        ]
+    ];
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL            => "https://mautic.formoney.com.br/form/submit?formId={$data['formId']}",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING       => '',
+        CURLOPT_MAXREDIRS      => 10,
+        CURLOPT_TIMEOUT        => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST  => 'POST',
+        CURLOPT_POSTFIELDS     => http_build_query($dataMautic),
+        ]);
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        return $response;
+}
+
+// Integração com PUBZAP
+function sendMessagePubzap(array $data): string
+{
+    $dataPubzap = [
+        "contact" => [
+            "first_name" => $data['nome'], 
+            "last_name"  => '',
+            "phone"      => $data['telefone'],
+            "email"      => $data['email']
+        ]
+    ];
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://pubzap.co/api/v1.0/Leads/89a7d9a0-a9fc-4818-8242-a7aebc1c4b51",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => json_encode($dataPubzap),
+        CURLOPT_HTTPHEADER => ['Content-Type: application/json']
+    ]);
+
+    $response = curl_exec($curl);
+    curl_close($curl);
 
     return $response;
 }
