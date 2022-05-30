@@ -20,15 +20,20 @@ function formoney_adicionar_post_presell()
 	register_post_type(
 		'presell',
 		array(
-			'labels'              => array(
-				'name'            => 'Presell',
-				'singular_name'   => 'Presell',
-				'edit_item'       => 'Editar Presell',
-				'add_new'         => 'Adicionar Nova',
-				'add_new_item'    => 'Adicionar Nova Presell',
-				'view_item'       => 'Visualizar Presell',
-				'view_items'      => 'Visualizar Todas',
+			'labels' => array(
+				'name'          => 'Presell',
+				'singular_name' => 'Presell',
+				'edit_item'     => 'Editar Presell',
+				'add_new'       => 'Adicionar Nova',
+				'add_new_item'  => 'Adicionar Nova Presell',
+				'view_item'     => 'Visualizar Presell',
+				'view_items'    => 'Visualizar Todas',
 			),
+			'register_meta_box_cb' => 'formoney_adicionar_meta_box',
+			'show_ui' => true,
+			'show_in_graphql'     => true,
+			'graphql_single_name' => 'Presell',
+			'graphql_plural_name' => 'Presells',
 			'public'              => true,
 			'exclude_from_search' => true,
 			'has_archive'         => false,
@@ -50,7 +55,6 @@ function formoney_adicionar_meta_box()
 		'presell'
 	);
 }
-add_action( 'add_meta_boxes', 'formoney_adicionar_meta_box' );
 
 ///////////// FUNÇÃO PARA CALLBACK META BOX //////////////
 function formoney_metabox_callback($post)
@@ -327,3 +331,265 @@ function formoney_salvar_dados_meta_box($post_id)
 	}
 }
 add_action( 'save_post', 'formoney_salvar_dados_meta_box' );
+
+// Disponibilizar campos da metaBox para graphQl
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_idioma', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_idioma', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_titulo', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_titulo', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_tipo_post', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_tipo_post', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_tipo_quiz', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_tipo_quiz', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_iframe', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_iframe', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_opcao_apos_envio', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_opcao_apos_envio', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_form_id', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_form_id', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_headline', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_headline', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_text_top', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_text_top', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_subtitulo', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_subtitulo', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_headline_2', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_headline_2', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_titulo_lista', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_titulo_lista', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_headline_form', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_headline_form', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_botao_form', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_botao_form', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_link', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_link', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_texto_botao', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_texto_botao', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_link_adicional', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_link_adicional', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_texto_link_adicional', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_texto_link_adicional', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_1', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_1', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_2', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_2', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_3', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_3', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_4', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_4', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_5', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_5', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_6', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_6', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_7', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_7', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_8', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_8', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_9', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_9', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_item_10', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_item_10', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_modelo_presell', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_modelo_presell', true );
+       }
+    ]);
+});
