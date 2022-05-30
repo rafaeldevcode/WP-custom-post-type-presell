@@ -194,10 +194,12 @@ function sendForm(){
             let formId = document.getElementById('form_id').value;
             let idioma = document.getElementById('idioma').value;
             let artigo = document.getElementById('artigo').value;
+            let textoBotao = document.getElementById('texto_botao').value;
             let opcaoAposEnvio = document.getElementById('opcao_apos_envio').value;
             let formData = new FormData();
             let urlAtual = window.location.href;
             let source = new URLSearchParams(window.location.search).get('utm_source');
+            let tipoQuiz = document.getElementById('tipo_quiz').value;
 
 			formData.append('nome', nome);
 			formData.append('email', email);
@@ -217,9 +219,16 @@ function sendForm(){
                 
                 if(response.status === 200){
                     let h4 = document.createElement('h4');
-                        h4.innerHTML = returnMessageTranslated(idioma, 'formularioEnviado');
+                        h4.innerHTML = returnMessageTranslated(idioma, 'formularioEnviado')[tipoQuiz];
+                    
+                    let a = document.createElement('a');
+                        a.setAttribute('href', artigo);
+                        a.setAttribute('class', 'btn-after-form')
+                        a.innerHTML = textoBotao;
+
                         formularioPresell.innerHTML = '';
                         formularioPresell.appendChild(h4);
+                        opcaoAposEnvio !== 'redirecionar' ? formularioPresell.appendChild(a) : '';
 
                         let ocultarBotao = document.querySelectorAll('.btn-presell');
                             if(opcaoAposEnvio == 'exibir_botoes'){
@@ -249,17 +258,26 @@ function sendForm(){
 function returnMessageTranslated(idioma, typeMessage){
     const message = {
         Português: {
-            formularioEnviado: 'Pronto! Enviaremos no seu e-mail em alguns minutos o link do cartão.',
+            formularioEnviado: {
+                cartao: 'Pronto! Agora clique no botão abaixo para ver o cartão que encontramos para você:',
+                emprestimo: ''
+            },
             valueMissing: 'Por favor, preencha este campo!',
             typeMismatch: 'Por favor, digite um email válido!'
         },
         Espanhol: {
-            formularioEnviado: '¡Em breve! Le enviaremos el enlace de la tarjeta a su correo electrónico en unos minutos.',
+            formularioEnviado: {
+                cartao: '¡Listo! Ahora haga clic en el botón de abajo para ver la tarjeta que encontramos para usted:',
+                emprestimo: ''
+            },
             valueMissing: '¡Por favor complete este campo!',
             typeMismatch: 'Por favor, escriba un correo electrónico válido.'
         },
         Inglês: {
-            formularioEnviado: 'Ready! We will send the card link to your email in a few minutes.',
+            formularioEnviado: {
+                cartao: 'Ready! Now click the button below to see the card we found for you:',
+                emprestimo: ''
+            },
             valueMissing: 'Please fill in this field!',
             typeMismatch: 'Please, type a valid email.'
         }

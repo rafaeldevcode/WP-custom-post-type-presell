@@ -295,6 +295,26 @@
     text-align: right;
 }
 
+.btn-after-form{
+    background: var(--color-main);
+    border: 1px solid var(--color-main);
+    color: #FFF;
+    padding: 15px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.2em;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    transition: all .4s;
+}
+
+.btn-after-form:hover{
+    color: var(--color-main);
+    background: #FFF;
+}
+
 .invalid{
     animation: mostrarErro .4s ease-in-out forwards;
 }

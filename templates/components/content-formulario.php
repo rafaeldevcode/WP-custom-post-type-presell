@@ -7,6 +7,7 @@
     $headline_form = get_post_meta( $post->ID, '_headline_form', true );
 	$botao_form = get_post_meta( $post->ID, '_botao_form', true );
     $modelo_presell = get_post_meta( $post->ID, '_modelo_presell', true );
+    $texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
 
     $colecao_idiomas = [
         'Português' => [
@@ -39,9 +40,10 @@
             <input type="hidden" id="form_id" name="form_id" value="<?php echo $form_id ?>">
             <input type="hidden" id="idioma" name="idioma" value="<?php echo $idioma ?>">
             <input type="hidden" id="artigo" name="artigo" value="<?php echo $link ?>">
+            <input type="hidden" id="texto_botao" name="texto_botao" value="<?php echo $texto_botao ?>">
             <input type="hidden" id="tipo_quiz" name="tipo_quiz" value="<?php echo $tipo_quiz ?>">
             <input type="hidden" id="opcao_apos_envio" name="opcao_apos_envio" value="<?php echo $opcao_apos_envio ?>">
-
+            
             <div class="inputs">
                 <div class="input">
                     <input required type="text" id="nome" name="nome">
