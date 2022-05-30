@@ -187,6 +187,7 @@ function sendForm(){
         document.getElementById('loading').classList.add('loading-flex');
 
         try {
+            let querys = window.location.search;
             let url = document.getElementById('url').value;
             let nome = document.getElementById('nome').value;
             let email = document.getElementById('email').value;
@@ -222,7 +223,7 @@ function sendForm(){
                         h4.innerHTML = returnMessageTranslated(idioma, 'formularioEnviado')[tipoQuiz];
                     
                     let a = document.createElement('a');
-                        a.setAttribute('href', artigo);
+                        a.setAttribute('href', artigo+querys);
                         a.setAttribute('class', 'btn-after-form')
                         a.innerHTML = textoBotao;
 
@@ -242,7 +243,6 @@ function sendForm(){
                                 }
                             }else if(opcaoAposEnvio == 'redirecionar'){
                                 setTimeout(() => {
-                                    let querys = window.location.search;
                                     let url = querys == '' ? `${artigo}?lead=1` : `${artigo}${querys}&lead=1`;
                                         window.location.href = url;
                                 }, 500);
