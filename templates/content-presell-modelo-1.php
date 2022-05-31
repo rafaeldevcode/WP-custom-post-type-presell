@@ -83,7 +83,7 @@
         <?php
             if($tipo_post !== 'Sem Botões'){ ?>
                 <div class="btn-artigo">
-                    <a <?= $background ?> href="<?= $link ?>"> <?php echo $texto_botao; ?> </a>
+                    <a <?= $background ?> href="<?= $link.'?pg=1' ?>"> <?php echo $texto_botao; ?> </a>
                 </div>
         <?php } ?>
 
@@ -111,7 +111,7 @@
         <?php
             if($tipo_post === 'Dois Botões'){ ?>
                 <div class="btn-artigo">
-                    <a <?= $background ?> href="<?= $link ?>"> <?php echo $texto_botao; ?>  </a>
+                    <a <?= $background ?> href="<?= $link.'?pg=1' ?>"> <?php echo $texto_botao; ?>  </a>
                 </div>
         <?php } ?>
 

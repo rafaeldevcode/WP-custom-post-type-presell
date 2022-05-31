@@ -214,6 +214,7 @@ function sendForm(){
                 method: 'POST',
                 body: formData
             }).then((response) => {
+                let url = querys == '' ? `${artigo}?pg=1&lead=1` : `${artigo}${querys}&pg=1&lead=1`;
                 document.querySelector('html').style.scrollBehavior = 'smooth';
                 console.log(response);
                 fbq('track', 'Lead');
@@ -223,7 +224,7 @@ function sendForm(){
                         h4.innerHTML = returnMessageTranslated(idioma, 'formularioEnviado')[tipoQuiz];
                     
                     let a = document.createElement('a');
-                        a.setAttribute('href', artigo+querys);
+                        a.setAttribute('href', url);
                         a.setAttribute('class', 'btn-after-form')
                         a.innerHTML = textoBotao;
 
@@ -243,8 +244,7 @@ function sendForm(){
                                 }
                             }else if(opcaoAposEnvio == 'redirecionar'){
                                 setTimeout(() => {
-                                    let url = querys == '' ? `${artigo}?lead=1` : `${artigo}${querys}&lead=1`;
-                                        window.location.href = url;
+                                    window.location.href = url;
                                 }, 500);
                             }
                 }

@@ -71,7 +71,7 @@
                 <?php
                     if($tipo_post !== 'Sem Botões'){ ?>
                         <div class="btn-presell ">
-                            <a class="link-btn" href="<?php echo $link ?>" title="Link"><?php echo $texto_botao ?></a>
+                            <a class="link-btn" href="<?php echo $link.'?pg=1' ?>" title="Link"><?php echo $texto_botao ?></a>
                         </div>
                     <?php } 
                 ?>
@@ -105,7 +105,7 @@
         <?php
             if($tipo_post === 'Dois Botões'){ ?>
                 <div class="btn-presell btn-bottom">
-                    <a class="link-btn" href="<?php echo $link ?>" title="Link"><?php echo $texto_botao ?></a>
+                    <a class="link-btn" href="<?php echo $link.'?pg=1' ?>" title="Link"><?php echo $texto_botao ?></a>
                 </div>
             <?php } 
         ?>
@@ -113,7 +113,7 @@
 		<?php
 			if(!empty($link_adicional)): ?>
 		        <div class="link">
-					<a href="<?php echo $link_adicional ?> "><?php echo $texto_link_adicional ?> →</a>
+					<a href="<?php echo $link_adicional.'?pg=1' ?> "><?php echo $texto_link_adicional ?> →</a>
 				</div>
 			<?php endif;
 		?>
