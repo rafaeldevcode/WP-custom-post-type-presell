@@ -6,7 +6,8 @@ function sendApi(array $data): void
 {
     $day = date("m.d.y");
 
-    $responseMautic = sendContactMautic($data);
+    // $responseMautic = sendContactMautic($data);
+    $responseActive = sendContactActive($data);
 
     if($data['idioma'] === 'Português'):
         if($data['source'] === 'facebook'):
@@ -18,7 +19,9 @@ function sendApi(array $data): void
         logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-AKNA: {$responseAkna}]", 'INFO', "Logs/register-{$day}.log");
     endif;
 
-    logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-MAUTIC: {$responseMautic}]", 'INFO', "Logs/register-{$day}.log");
+    // logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-MAUTIC: {$responseMautic}]", 'INFO', "Logs/register-{$day}.log");
+    logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-ACTIVE: {$responseActive}]", 'INFO', "Logs/register-{$day}.log");
+
 }
 
 // Integração com AKNA
@@ -100,7 +103,7 @@ function sendMessagePubzap(array $data): string
             "first_name" => $data['nome'], 
             "last_name"  => '',
             "phone"      => $data['telefone'],
-            "email"      => $data['email']
+            "email"      => $data['email'],
         ]
     ];
 
@@ -119,6 +122,36 @@ function sendMessagePubzap(array $data): string
         CURLOPT_HTTPHEADER => ['Content-Type: application/json']
     ]);
 
+    $response = curl_exec($curl);
+    curl_close($curl);
+
+    return $response;
+}
+
+// Integração com Active Campaign
+function sendContactActive(array $data): string
+{
+    $dataActive = [
+        'email'      => $data['email'],
+        'first_name' => $data['nome'],
+        'phone'      => $data['telefone'],
+        'p[]'        => '5'
+    ];
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => 'https://usmoney.api-us1.com/admin/api.php?api_key=35cbe00337d26601704b06449027485e1e45040a885348d39352e8de08f4e5ce7e8b09df&api_action=contact_add&api_output=serialize',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => $dataActive,
+    ]);
+    
     $response = curl_exec($curl);
     curl_close($curl);
 
