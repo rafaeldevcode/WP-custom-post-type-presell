@@ -23,6 +23,7 @@
     $texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
     $link_adicional = get_post_meta(get_the_ID(), '_link_adicional', true);
     $texto_link_adicional = get_post_meta( $post->ID, '_texto_link_adicional', true );
+    $opcao_banners = get_post_meta( $post->ID, '_opcao_banners', true );
 
     $items = [
 		get_post_meta( $post->ID, '_item_1', true ),
@@ -103,6 +104,13 @@
                     <p><?php echo $headline_2 ?></p>
                 </div>
             <?php endif;
+
+            if($opcao_banners === 'two_banner'):
+                // <!-- Banner Desktop -->
+                if (function_exists ('adinserter')) echo adinserter (6);
+                // <!-- Banner Mobile -->
+                if (function_exists ('adinserter')) echo adinserter (17);
+            endif;
         ?>
 
         <?php

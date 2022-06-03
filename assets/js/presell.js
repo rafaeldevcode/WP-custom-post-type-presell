@@ -43,6 +43,7 @@ function ocultarInputs(templateColecao){
         if(templateColecao[inputName] === false){
             // Ocultar div dos inputs radio caso seja formulario
             divInputRadio.id == 'opcao_apos_envio' ? divInputRadio.style.display = 'none' : ''; 
+            divInputRadio.id == 'banners' ? divInputRadio.style.display = 'none' : ''; 
             divInputRadio.id == 'tipo_quiz' ? divInputRadio.style.display = 'none' : ''; 
             formulario.id == 'formulario' ? formulario.style.display = 'none' : '';
 
@@ -50,6 +51,7 @@ function ocultarInputs(templateColecao){
         }else if(templateColecao[inputName] === true){
             // Exibir div dos inputs radio caso seja formulario
             divInputRadio.id == 'opcao_apos_envio' ? divInputRadio.style.display = 'block' : ''; 
+            divInputRadio.id == 'banners' ? divInputRadio.style.display = 'block' : ''; 
             divInputRadio.id == 'tipo_quiz' ? divInputRadio.style.display = 'block' : ''; 
             formulario.id == 'formulario' ? formulario.style.display = 'flex' : '';
             
@@ -78,6 +80,7 @@ function retornarTemplate(templateParam){
 
     const template = {
         Modelo_1: {
+            opcao_banners: true,
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: false,
@@ -106,6 +109,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_2: {
+            opcao_banners: true,
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: true,
@@ -134,6 +138,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_3: {
+            opcao_banners: false,
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: true,
@@ -162,6 +167,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_4: {
+            opcao_banners: true,
             tipo_quiz: false,
             opcao_apos_envio: true,
             text_top: true,
@@ -190,6 +196,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_5: {
+            opcao_banners: true,
             tipo_quiz: true,
             opcao_apos_envio: true,
             text_top: true,
@@ -218,6 +225,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_6: {
+            opcao_banners: true,
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: false,
@@ -246,6 +254,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_7: {
+            opcao_banners: false,
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: true,
@@ -274,6 +283,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Modelo_8: {
+            opcao_banners: true,
             tipo_quiz: true,
             opcao_apos_envio: true,
             text_top: false,
@@ -302,6 +312,7 @@ function retornarTemplate(templateParam){
             item_10: true,
         },
         Nenhum: {
+            opcao_banners: false,
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: false,

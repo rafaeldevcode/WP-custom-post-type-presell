@@ -60,6 +60,7 @@ function formoney_adicionar_meta_box()
 function formoney_metabox_callback($post)
 {
 	$idioma = get_post_meta( $post->ID, '_idioma', true );
+	$opcao_banners = get_post_meta( $post->ID, '_opcao_banners', true );
 	$opcao_apos_envio = get_post_meta( $post->ID, '_opcao_apos_envio', true );
 	$tipo_quiz = get_post_meta( $post->ID, '_tipo_quiz', true );
 	$tipo_post = get_post_meta( $post->ID, '_tipo_post', true );
@@ -143,6 +144,25 @@ function formoney_metabox_callback($post)
 					<option value="modelo_7">Modelo 7 / Botão fixo e sem banner</option>
 					<option value="modelo_8">Modelo 8 / Banner e pergunta na mesma tela</option>
 				</select>
+			</div>
+		</div>
+
+		<div class="inputs-radios" id="banners">
+			<h4>Banners</h4>
+			<div>
+				<div>
+					<label>
+						1 Banner
+						<input type="radio" name="opcao_banners" <?= $opcao_banners == 'one_banner' || empty($opcao_banners) ? 'checked' : '' ?> value="one_banner">
+					</label>
+				</div>
+
+				<div>
+					<label>
+						2 Banners
+						<input type="radio" name="opcao_banners" <?= $opcao_banners == 'two_banner' ? 'checked' : '' ?> value="two_banner">
+					</label>
+				</div>
 			</div>
 		</div>
 
@@ -319,6 +339,7 @@ function formoney_salvar_dados_meta_box($post_id)
 		&& $key !== 'item_8' 
 		&& $key !== 'item_9' 
 		&& $key !== 'item_10'
+		&& $key !== 'opcao_banners'
 		&& $key !== 'modelo_presell'){
 			continue;
 		}

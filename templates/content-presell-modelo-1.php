@@ -18,6 +18,7 @@
     $titulo_lista = get_post_meta( $post->ID, '_titulo_lista', true );
     $link = get_post_meta(get_the_ID(), '_link', true);
     $texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
+    $opcao_banners = get_post_meta( $post->ID, '_opcao_banners', true );
 
     $items = [
 		get_post_meta( $post->ID, '_item_1', true ),
@@ -74,7 +75,11 @@
         </div>
 
         <!-- Banner Desktop para um post especifico -->
-        <?php if($exibirAnuncio === true) if (function_exists ('adinserter')) echo adinserter (6); ?>
+        <?php 
+            if($opcao_banners === 'two_banner'):
+                if($exibirAnuncio === true) if (function_exists ('adinserter')) echo adinserter (6); 
+            endif;    
+        ?>
 
         <div class="headline-2">
             <p><strong><?php echo $colecao_idiomas[$idioma]['atencao']; ?></strong> <?php echo $headline_2; ?> </p>
@@ -93,7 +98,11 @@
                     <h3><?= $titulo_lista ?></h3>
 
                     <!-- Banner Mobile para um post especifico -->
-                    <?php if($exibirAnuncio === true) if (function_exists ('adinserter')) echo adinserter (17); ?>
+                    <?php
+                        if($opcao_banners === 'two_banner'):
+                            if($exibirAnuncio === true) if (function_exists ('adinserter')) echo adinserter (17); 
+                        endif;
+                    ?>
 
                     <ul>
                         <?php 
