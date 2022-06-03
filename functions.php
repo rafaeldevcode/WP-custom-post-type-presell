@@ -614,3 +614,13 @@ add_action( 'graphql_register_types', function() {
        }
     ]);
 });
+
+// Adicionar no usmoney
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_opcao_banners', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_opcao_banners', true );
+       }
+    ]);
+});

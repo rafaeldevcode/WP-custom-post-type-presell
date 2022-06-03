@@ -89,13 +89,11 @@
         <!-- Exibir formulario -->
         <?php get_template_part( 'templates/components/content', 'formulario'); ?>
 
-        <?php
-            if(!empty($item_1)): ?>
-                <div class="text">
-                    <p><?php echo $headline_2 ?></p>
-                </div>
-            <?php endif;
+        <div class="text">
+            <p><?php echo $headline_2 ?></p>
+        </div>
 
+        <?php
             if($opcao_banners === 'two_banner'):
                 // <!-- Banner Desktop -->
                 if (function_exists ('adinserter')) echo adinserter (6);
