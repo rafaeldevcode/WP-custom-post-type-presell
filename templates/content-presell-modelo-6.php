@@ -90,7 +90,7 @@
                 </div>
                 <?php
                     if($tipo_post !== 'Sem Botões'){ ?>
-                        <div class="btn-presell ocultar-botao">
+                        <div class="btn-presell">
                             <a class="link-btn" href="<?php echo $link.'?pg=1' ?>" title="Link"><?php echo $texto_botao ?></a>
                         </div>
                     <?php } 
@@ -129,7 +129,7 @@
 
         <?php
             if($tipo_post === 'Dois Botões'){ ?>
-                <div class="btn-presell btn-bottom ocultar-botao">
+                <div class="btn-presell btn-bottom">
                     <a class="link-btn" href="<?php echo $link.'?pg=1' ?>" title="Link"><?php echo $texto_botao ?></a>
                 </div>
             <?php } 

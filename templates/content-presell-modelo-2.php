@@ -76,7 +76,7 @@
                 </div>
                 <?php
                     if($tipo_post !== 'Sem Botões'){ ?>
-                        <div class="btn-presell ">
+                        <div class="btn-presell">
                             <a class="link-btn" href="<?php echo $link.'?pg=1' ?>" title="Link"><?php echo $texto_botao ?></a>
                         </div>
                     <?php } 
