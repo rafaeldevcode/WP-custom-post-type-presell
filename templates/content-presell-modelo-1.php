@@ -77,7 +77,7 @@
         <!-- Banner Desktop para um post especifico -->
         <?php 
             if($opcao_banners === 'two_banner'):
-                if($exibirAnuncio === true) if (function_exists ('adinserter')) echo adinserter (6); 
+                if (function_exists ('adinserter')) echo adinserter (6); 
             endif;    
         ?>
 
@@ -100,7 +100,7 @@
                     <!-- Banner Mobile para um post especifico -->
                     <?php
                         if($opcao_banners === 'two_banner'):
-                            if($exibirAnuncio === true) if (function_exists ('adinserter')) echo adinserter (17); 
+                            if (function_exists ('adinserter')) echo adinserter (17); 
                         endif;
                     ?>
 
