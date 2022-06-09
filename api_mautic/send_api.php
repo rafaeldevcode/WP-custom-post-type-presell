@@ -6,12 +6,12 @@ function sendApi(array $data): void
 {
     $day = date("m.d.y");
 
-    // $responseMautic = sendContactMautic($data);
-    $responseActive = sendContactActive($data);
-
     if($data['idioma'] === 'Português'):
         if($data['source'] === 'facebook'):
-            $responsePubzap = sendMessagePubzap($data);
+            $responsePubzap = sendMessagePubzap($data, '89a7d9a0-a9fc-4818-8242-a7aebc1c4b51');
+            logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-PUBZAP: {$responsePubzap}]", 'INFO', "Logs/register-{$day}.log");
+        elseif($data['source'] === 'google'):
+            $responsePubzap = sendMessagePubzap($data, '48dfdfe5-959a-4953-a07c-5544cff5a28e');
             logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-PUBZAP: {$responsePubzap}]", 'INFO', "Logs/register-{$day}.log");
         endif;
 
@@ -19,8 +19,11 @@ function sendApi(array $data): void
         logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-AKNA: {$responseAkna}]", 'INFO', "Logs/register-{$day}.log");
     endif;
 
-    // logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-MAUTIC: {$responseMautic}]", 'INFO', "Logs/register-{$day}.log");
-    logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-ACTIVE: {$responseActive}]", 'INFO', "Logs/register-{$day}.log");
+    $responseMautic = sendContactMautic($data);
+    logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-MAUTIC: {$responseMautic}]", 'INFO', "Logs/register-{$day}.log");
+    
+    // $responseActive = sendContactActive($data);
+    // logMsg("[URL: '{$_POST['urlAtual']}'][RESPONSE-ACTIVE: {$responseActive}]", 'INFO', "Logs/register-{$day}.log");
 
 }
 
@@ -96,7 +99,7 @@ function sendContactMautic(array $data): string
 }
 
 // Integração com PUBZAP
-function sendMessagePubzap(array $data): string
+function sendMessagePubzap(array $data, string $token): string
 {
     $dataPubzap = [
         "contact" => [
@@ -110,7 +113,7 @@ function sendMessagePubzap(array $data): string
     $curl = curl_init();
 
     curl_setopt_array($curl, [
-        CURLOPT_URL => "https://pubzap.co/api/v1.0/Leads/89a7d9a0-a9fc-4818-8242-a7aebc1c4b51",
+        CURLOPT_URL => "https://pubzap.co/api/v1.0/Leads/{$token}",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
