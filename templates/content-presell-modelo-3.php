@@ -85,13 +85,9 @@
             </div>
         </div>
 
-        <?php
-            if(!empty($item_1)): ?>
-                <div class="text">
-                    <p><?php echo $headline_2 ?></p>
-                </div>
-            <?php endif;
-        ?>
+        <div class="text">
+            <p><?php echo $headline_2 ?></p>
+        </div>
 
         <!-- Banner Desktop -->
         <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
@@ -113,6 +109,10 @@
                 </div>
             <?php endif;
         ?>
+
+        <div class="texto-presell">
+            <?php the_content(); ?>
+        </div>
 
         <?php
             if($tipo_post === 'Dois Botões'){ ?>

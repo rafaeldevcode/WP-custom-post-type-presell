@@ -78,13 +78,9 @@
             </div>
         </div>
 
-        <?php
-            if(!empty($item_1)): ?>
-                <div class="text">
-                    <p><?php echo $headline_2 ?></p>
-                </div>
-            <?php endif;
-        ?>
+        <div class="text">
+            <p><?php echo $headline_2 ?></p>
+        </div>
 
         <?php
             if(!empty($items)): ?>
