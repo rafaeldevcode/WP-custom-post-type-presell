@@ -84,6 +84,7 @@ function retornarTemplate(templateParam){
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: false,
+            text_bottom: false,
             headline: true,
             iframe: false,
             form_id: false,
@@ -113,6 +114,7 @@ function retornarTemplate(templateParam){
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: true,
+            text_bottom: false,
             headline: true,
             iframe: false,
             form_id: false,
@@ -142,6 +144,7 @@ function retornarTemplate(templateParam){
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: true,
+            text_bottom: true,
             headline: true,
             iframe: false,
             form_id: false,
@@ -171,6 +174,7 @@ function retornarTemplate(templateParam){
             tipo_quiz: false,
             opcao_apos_envio: true,
             text_top: true,
+            text_bottom: false,
             headline: true,
             iframe: false,
             form_id: true,
@@ -200,6 +204,7 @@ function retornarTemplate(templateParam){
             tipo_quiz: true,
             opcao_apos_envio: true,
             text_top: true,
+            text_bottom: false,
             headline: true,
             form_id: true,
             iframe: false,
@@ -229,6 +234,7 @@ function retornarTemplate(templateParam){
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: false,
+            text_bottom: false,
             headline: true,
             iframe: true,
             form_id: false,
@@ -258,6 +264,7 @@ function retornarTemplate(templateParam){
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: true,
+            text_bottom: false,
             headline: true,
             iframe: false,
             form_id: false,
@@ -287,10 +294,41 @@ function retornarTemplate(templateParam){
             tipo_quiz: true,
             opcao_apos_envio: true,
             text_top: false,
+            text_bottom: false,
             headline: true,
             form_id: true,
             iframe: false,
             titulo: false,
+            subtitulo: true,
+            headline_2: true,
+            titulo_lista: false,
+            headline_form: true,
+            botao_form: true,
+            link: true,
+            texto_botao: true,
+            link_adicional: true,
+            texto_link_adicional: true,
+            item_1: true,
+            item_2: true,
+            item_3: true,
+            item_4: true,
+            item_5: true,
+            item_6: true,
+            item_7: true,
+            item_8: true,
+            item_9: true,
+            item_10: true,
+        },
+        Modelo_9: {
+            opcao_banners: true,
+            tipo_quiz: false,
+            opcao_apos_envio: true,
+            text_top: true,
+            text_bottom: false,
+            headline: true,
+            iframe: false,
+            form_id: true,
+            titulo: true,
             subtitulo: true,
             headline_2: true,
             titulo_lista: false,
@@ -316,6 +354,7 @@ function retornarTemplate(templateParam){
             tipo_quiz: false,
             opcao_apos_envio: false,
             text_top: false,
+            text_bottom: false,
             iframe: false,
             headline: false,
             form_id: false,
@@ -367,15 +406,26 @@ function retornarLabel(modelo)
         Modelo_5: {
             headline: 'Texto 1',
             headline_2: 'Texto 2',
+        },
+        Modelo_6: {
+            headline: 'Texto 1',
+            headline_2: 'Texto 2',
+        },
+        Modelo_7: {
+            headline: 'Texto 1',
+            headline_2: 'Texto 2',
+        },
+        Modelo_8: {
+            headline: 'Texto 1',
+            headline_2: 'Texto 2',
+        },
+        Modelo_9: {
+            headline: 'Texto 1',
+            headline_2: 'Texto 2',
         }
     };
 
     return label[modelo];
-}
-
-function inputsParaOcultar(){
-    return ['headline', 'titulo', 'subtitulo', 'headline_2', 'titulo_lista', 'link', 'texto_botao', 'link_adicional',
-    'texto_link_adicional', 'item_1', 'item_2', 'item_3', 'item_4', 'item_5', 'item_6', 'item_7', 'item_8', 'item_9', 'item_10'];
 }
 
 // Verificar se uma variavel esta em uma array

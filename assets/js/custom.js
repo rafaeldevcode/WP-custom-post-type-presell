@@ -42,7 +42,7 @@ function exibirPerguntas(){
     let tipoQuiz = document.getElementById('tipo_quiz').value;
     let protocol = window.location.protocol;
     let host = window.location.host;
-    let url = `${protocol}//${host}/api_mautic/quiz.json`;
+    let url = `${protocol}//${host}/formoney/api_mautic/quiz.json`;
     let quiz = document.getElementById('quiz');
     let dataPergunta = quiz.getAttribute('data-pergunta');
     let textPergunta = quiz.querySelector('h2');
@@ -214,15 +214,15 @@ function sendForm(){
                 method: 'POST',
                 body: formData
             }).then((response) => {
-                let url = querys == '' ? `${artigo}?pg=1&lead=1` : `${artigo}${querys}&pg=1&lead=1`;
+                let url = querys == '' ? `${artigo}?p=1&lead=1` : `${artigo}${querys}&p=1&lead=1`;
                 document.querySelector('html').style.scrollBehavior = 'smooth';
                 console.log(response);
-                fbq('track', 'Lead');
+                // fbq('track', 'Lead');
                 
                 if(response.status === 200){
                     let h4 = document.createElement('h4');
                         h4.innerHTML = returnMessageTranslated(idioma, 'formularioEnviado')[tipoQuiz];
-                    
+
                     let a = document.createElement('a');
                         a.setAttribute('href', url);
                         a.setAttribute('class', 'btn-after-form')
@@ -297,35 +297,65 @@ function backRedirect() {
     };
 }
 
-function scroll(){
+function scrollPresell(){
     window.addEventListener('scroll', ()=>{
-        let doc = document.documentElement;
-        let percentPage = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight));
+        const closedPopupPresell = getCookie('closedPopupPresell');
 
-        if((percentPage >= 75) && (percentPage <= 80)){
-            oppenPopup();
-        };
+        if(!closedPopupPresell){
+            let doc = document.documentElement;
+            let percentPage = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight));
+    
+            if((percentPage >= 75) && (percentPage <= 80)){
+                oppenPopupPresell();
+            };
+        }
     })
 }
 
-function oppenPopup(){
-    let exitPopup = document.getElementsByClassName('exit-popup')[0];
-    let bodyPopup = document.getElementsByClassName('body-popup')[0];
+function oppenPopupPresell(){
+    let popup = document.querySelector('section[data-poup-active]');
+    let body = document.querySelector('body');
+    let active = popup.getAttribute('data-poup-active'); 
 
-        exitPopup.style.display = 'flex';
-        bodyPopup.classList.remove('closePopup');
-        bodyPopup.classList.add('oppenPopup');
+        if(active == 'false'){
+            // body.classList.add('body-overflow');
 
-    function closePopup(exitPopup, bodyPopup) {
-        document.getElementById('close').addEventListener('click', ()=>{
-            bodyPopup.classList.remove('oppenPopup');
-            bodyPopup.classList.add('closePopup');
+            popup.setAttribute('data-poup-active', 'true');
+            popup.classList.remove('closedPopUpPresell');
+            popup.classList.add('oppenPopUpPresell');
+        }
+
+    function closePopupPresell(popup, body) {
+        document.getElementById('closed').addEventListener('click', ()=>{
+            // body.classList.remove('body-overflow');
+
+            popup.classList.remove('oppenPopUpPresell');
+            popup.classList.add('closedPopUpPresell');
+            document.cookie = 'closedPopupPresell=true';
     
             setTimeout(()=>{
-                exitPopup.style.display = 'none';
-            }, 500);
+                popup.setAttribute('data-poup-active', 'false');
+            }, 600);
         });
     }
 
-    closePopup(exitPopup, bodyPopup);
+    closePopupPresell(popup, body);
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let cookies = decodedCookie.split(';');
+
+    for(let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i];
+
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(name) == 0) {
+            return cookie.substring(name.length, cookie.length);
+        }
+    }
+    return "";
 }

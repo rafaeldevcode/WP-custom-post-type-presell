@@ -68,6 +68,7 @@ function formoney_metabox_callback($post)
 	$form_id = get_post_meta( $post->ID, '_form_id', true );
 	$iframe = get_post_meta( $post->ID, '_iframe', true );
 	$text_top = get_post_meta( $post->ID, '_text_top', true );
+	$text_bottom = get_post_meta( $post->ID, '_text_bottom', true );
 	$titulo = get_post_meta( $post->ID, '_titulo', true );
 	$subtitulo = get_post_meta( $post->ID, '_subtitulo', true );
 	$headline = get_post_meta( $post->ID, '_headline', true );
@@ -101,7 +102,8 @@ function formoney_metabox_callback($post)
 		'modelo_5' => 'Modelo 5 / Quiz + Captura',
 		'modelo_6' => 'Modelo 6 / Iframe',
 		'modelo_7' => 'Modelo 7 / Botão fixo e sem banner',
-		'modelo_8' => 'Modelo 8 / Banner e pergunta na mesma tela'
+		'modelo_8' => 'Modelo 8 / Banner e pergunta na mesma tela',
+		'modelo_9' => 'Modelo 9 / PopUp com captura'
 	];
 	
 	?>
@@ -143,6 +145,7 @@ function formoney_metabox_callback($post)
 					<option value="modelo_6">Modelo 6 / Iframe</option>
 					<option value="modelo_7">Modelo 7 / Botão fixo e sem banner</option>
 					<option value="modelo_8">Modelo 8 / Banner e pergunta na mesma tela</option>
+					<option value="modelo_9">Modelo 9 / PopUp com captura</option>
 				</select>
 			</div>
 		</div>
@@ -217,6 +220,11 @@ function formoney_metabox_callback($post)
 				<input class="input-presell" name="text_top" type="text" value="<?= $text_top; ?>">
 			</div>
 			
+			<div>
+				<label for="text_bottom">Texto abaixo do último botão</label>
+				<input class="input-presell" name="text_bottom" type="text" value="<?= $text_bottom; ?>">
+			</div>
+
 			<div>
 				<label for="titulo">Título</label>
 				<input class="input-presell" name="titulo" type="text" value="<?= $titulo; ?>">
@@ -340,6 +348,7 @@ function formoney_salvar_dados_meta_box($post_id)
 		&& $key !== 'item_9' 
 		&& $key !== 'item_10'
 		&& $key !== 'opcao_banners'
+		&& $key !== 'text_bottom'
 		&& $key !== 'modelo_presell'){
 			continue;
 		}
@@ -481,7 +490,7 @@ add_action( 'graphql_register_types', function() {
 });
 
 add_action( 'graphql_register_types', function() {
-    register_graphql_field('Presell', '_link', [
+    register_graphql_field('Presell', '_link_presell', [
 		'type' => 'String',
        	'resolve' => function($post) {
 			return get_post_meta($post->ID, '_link', true );
@@ -621,6 +630,15 @@ add_action( 'graphql_register_types', function() {
 		'type' => 'String',
        	'resolve' => function($post) {
 			return get_post_meta($post->ID, '_opcao_banners', true );
+       }
+    ]);
+});
+
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_text_bottom', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_text_bottom', true );
        }
     ]);
 });

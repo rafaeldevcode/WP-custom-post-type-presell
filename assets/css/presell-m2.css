@@ -210,6 +210,7 @@
     border-radius: 5px;
     box-shadow: 0px 0px 10px #27b93f83;
     padding: 15px;
+    background: #FFF;
 }
 
 .formulario-presell h4{
@@ -446,6 +447,91 @@
     height: 400px;
 }
 
+.text-bottom{
+    color: rgb(79, 79, 79);
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+/* Popup */
+.body-overflow{
+    overflow: hidden;
+}
+
+section[data-poup-active='false']{
+    display: none;
+}
+
+section[data-poup-active='true']{
+    display: block;
+}
+
+.oppenPopUpPresell{
+    animation: slideShowPoup .6s ease-out forwards;
+}
+
+.closedPopUpPresell{
+    animation: slideHiddenPoup .6s ease-out forwards;
+}
+
+.popup{
+    position: fixed;
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 2rem;
+}
+
+.closed{
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1.5rem;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #FFF;
+    border: 2px solid grey;
+    z-index: 100;
+}
+
+.closed::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 75%;
+    height: 2px;
+    background: grey;
+    border-radius: 2px;
+    transform: rotate(40deg);
+}
+
+.closed::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 75%;
+    height: 2px;
+    background: grey;
+    border-radius: 2px;
+    transform: rotate(-40deg);
+}
+
 @media only screen and (max-width: 700px){
     .card-desc{
         flex-direction: column;
@@ -539,6 +625,28 @@
     }
     100%{
         transform: translateY(90px);
+        opacity: 0;
+    }
+}
+
+@keyframes slideShowPoup {
+    0%{
+        transform: translateY(-400px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideHiddenPoup {
+    0%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(-400px);
         opacity: 0;
     }
 }

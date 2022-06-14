@@ -61,7 +61,7 @@
             <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
 
             <h2> <?= $titulo ?> </h2>
-            <a <?= $background ?>> <?php echo $subtitulo; ?></a>
+            <a href="<?php echo $link ?>" <?= $background ?>> <?php echo $subtitulo; ?></a>
         </div>
 
         <div class="headline-1">
