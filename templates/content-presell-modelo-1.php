@@ -66,8 +66,11 @@
 
         <div class="headline-1">
             <p><?php echo $headline; ?></p>
-            <!-- Banner Mobile -->
-            <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
+
+            <div id="bloco_1">
+                <!-- Banner Mobile -->
+                <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
+            </div>
         </div>
 
         <div class="image-presell">
@@ -99,9 +102,11 @@
 
                     <!-- Banner Mobile para um post especifico -->
                     <?php
-                        if($opcao_banners === 'two_banner'):
-                            if (function_exists ('adinserter')) echo adinserter (17); 
-                        endif;
+                        if($opcao_banners === 'two_banner'): ?>
+                            <div id="bloco_2">
+                                <?php if (function_exists ('adinserter')) echo adinserter (17); ?>
+                            </div> 
+                        <?php endif;
                     ?>
 
                     <ul>

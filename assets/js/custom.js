@@ -20,17 +20,30 @@ function exibirBotaoCta(){
     let btnCta = document.getElementById('btn-cta');
     let mobile = parseInt(screen.width);
 
+
     if(mobile < 601){
         window.addEventListener('scroll', ()=>{
-            let doc = document.documentElement;
-            let percentPage = parseInt(100 * doc.scrollTop / (doc.scrollHeight - doc.clientHeight));
-            
-            if(percentPage >= 10){
-                btnCta.classList.remove('fadeOut');
-                btnCta.classList.add('fadeIn');
+            let anuncio1 = document.getElementById('bloco_1');
+            let anuncio2 = document.getElementById('bloco_2');
+        
+            if(anuncio2 === null){
+                anuncio1 = parseInt(anuncio1.getBoundingClientRect().top.toFixed(0)) + parseInt(anuncio1.getBoundingClientRect().height.toFixed(0));
+
+                showButton(anuncio1);
             }else{
-                btnCta.classList.remove('fadeIn');
-                btnCta.classList.add('fadeOut');
+                anuncio2 = parseInt(anuncio2.getBoundingClientRect().top.toFixed(0)) + parseInt(anuncio2.getBoundingClientRect().height.toFixed(0));
+                
+                showButton(anuncio2);
+            }
+            
+            function showButton(top){
+                if(top < 0){
+                    btnCta.classList.remove('fadeOut');
+                    btnCta.classList.add('fadeIn');
+                }else{
+                    btnCta.classList.remove('fadeIn');
+                    btnCta.classList.add('fadeOut');
+                }
             }
         })
     }

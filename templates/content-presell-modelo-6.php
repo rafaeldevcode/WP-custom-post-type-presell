@@ -69,10 +69,12 @@
             <iframe class="presell-video-iframe" src="<?php echo $iframe ?>"></iframe>
         </section>
 
-        <!-- Banner Desktop -->
-        <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
-        <!-- Banner Mobile -->
-        <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
+        <div id="bloco_1">
+            <!-- Banner Desktop -->
+            <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
+            <!-- Banner Mobile -->
+            <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
+        </div>
 
         <div class="titulos">
             <h2><?php echo $subtitulo ?></h2>
@@ -102,13 +104,15 @@
             <p><?php echo $headline_2 ?></p>
         </div>
 
-        <?php
-            if($opcao_banners === 'two_banner'):
-                // <!-- Banner Desktop -->
-                if (function_exists ('adinserter')) echo adinserter (6);
-                // <!-- Banner Mobile -->
-                if (function_exists ('adinserter')) echo adinserter (17);
-            endif;
+        <?php   
+            if($opcao_banners === 'two_banner'): ?>
+                <div id="bloco_2">
+                    <!-- Banner Desktop -->
+                    <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
+                    <!-- Banner Mobile -->
+                    <?php if (function_exists ('adinserter')) echo adinserter (17); ?>
+                </div>
+            <?php endif;
         ?>
 
         <?php
