@@ -62,10 +62,12 @@
             <span><?php echo $colecao_idiomas[$idioma]['label_progress'] ?></span>
         </div>
 
-        <!-- Banner Desktop -->
-        <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
-        <!-- Banner Mobile -->
-        <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
+        <div id="bloco_1">
+            <!-- Banner Desktop -->
+            <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
+            <!-- Banner Mobile -->
+            <?php if (function_exists ('adinserter')) echo adinserter (18); ?>
+        </div>
 
         <div class="card-desc">
             <div class="card">
@@ -90,10 +92,12 @@
             <p><?php echo $headline_2 ?></p>
         </div>
 
-        <!-- Banner Desktop -->
-        <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
-        <!-- Banner Mobile -->
-        <?php if (function_exists ('adinserter')) echo adinserter (17); ?>
+        <div id="bloco_2">
+            <!-- Banner Desktop -->
+            <?php if (function_exists ('adinserter')) echo adinserter (6); ?>
+            <!-- Banner Mobile -->
+            <?php if (function_exists ('adinserter')) echo adinserter (17); ?>
+        </div>
 
         <?php
             if(!empty($items)): ?>
