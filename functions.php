@@ -80,6 +80,7 @@ function formoney_metabox_callback($post)
 	$texto_botao = get_post_meta( $post->ID, '_texto_botao', true );
     $link_adicional = get_post_meta(get_the_ID(), '_link_adicional', true);
     $texto_link_adicional = get_post_meta( $post->ID, '_texto_link_adicional', true );
+	$btn_animation = get_post_meta( $post->ID, '_btn_animation', true );
 
 	$items = [
 		get_post_meta( $post->ID, '_item_1', true ),
@@ -147,6 +148,25 @@ function formoney_metabox_callback($post)
 					<option value="modelo_8">Modelo 8 / Banner e pergunta na mesma tela</option>
 					<option value="modelo_9">Modelo 9 / PopUp com captura</option>
 				</select>
+			</div>
+		</div>
+
+		<div class="inputs-radios">
+			<h4>Animar botão flutuante CTA?</h4>
+			<div>
+				<div>
+					<label>
+					Não
+						<input type="radio" name="btn_animation" <?= $btn_animation == 'no' || empty($btn_animation) ? 'checked' : '' ?> value="no">
+					</label>
+				</div>
+
+				<div>
+					<label>
+						Sim
+						<input type="radio" name="btn_animation" <?= $btn_animation == 'yes' ? 'checked' : '' ?> value="yes">
+					</label>
+				</div>
 			</div>
 		</div>
 
@@ -349,6 +369,7 @@ function formoney_salvar_dados_meta_box($post_id)
 		&& $key !== 'item_10'
 		&& $key !== 'opcao_banners'
 		&& $key !== 'text_bottom'
+		&& $key !== 'btn_animation'
 		&& $key !== 'modelo_presell'){
 			continue;
 		}
@@ -624,7 +645,6 @@ add_action( 'graphql_register_types', function() {
     ]);
 });
 
-// Adicionar no usmoney
 add_action( 'graphql_register_types', function() {
     register_graphql_field('Presell', '_opcao_banners', [
 		'type' => 'String',
@@ -639,6 +659,16 @@ add_action( 'graphql_register_types', function() {
 		'type' => 'String',
        	'resolve' => function($post) {
 			return get_post_meta($post->ID, '_text_bottom', true );
+       }
+    ]);
+});
+
+// Adicionar no usmoney
+add_action( 'graphql_register_types', function() {
+    register_graphql_field('Presell', '_btn_animation', [
+		'type' => 'String',
+       	'resolve' => function($post) {
+			return get_post_meta($post->ID, '_btn_animation', true );
        }
     ]);
 });

@@ -410,7 +410,8 @@
 .btn-cta a{
     display: block;
     font-size: 1.4rem;
-    width: 100%;
+    margin: auto;
+    /* width: 100%; */
     max-width: 400px;
     text-transform: uppercase;
     background: var(--color-main);
@@ -420,6 +421,10 @@
     color: #FFF;
     font-weight: bolder;
     transition: all .4s;
+}
+
+.animationCta{
+    animation: animationCta 1s linear infinite;
 }
 
 .btn-cta a:hover{
@@ -648,5 +653,23 @@ section[data-poup-active='true']{
     100%{
         transform: translateY(-400px);
         opacity: 0;
+    }
+}
+
+@keyframes animationCta {
+    0%{
+        max-width: 200px;
+        transform: scaleX(.95);
+        font-size: 1.2rem;
+    }
+    50%{
+        max-width: 400px;
+        transform: scaleX(1);
+        font-size: 1.4rem; 
+    }
+    100%{
+        max-width: 200px;
+        transform: scaleX(.95);
+        font-size: 1.2rem;
     }
 }

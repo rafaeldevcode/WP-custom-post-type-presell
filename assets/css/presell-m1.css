@@ -206,6 +206,10 @@
     color: var(--color-main);
 }
 
+.animationCta{
+    animation: animationCta 1s linear infinite;
+}
+
 @media only screen and (max-width: 650px){
     .conteudo-presell .titulo h2{
         font-size: 2em;
@@ -284,5 +288,23 @@
     100%{
         transform: translateY(90px);
         opacity: 0;
+    }
+}
+
+@keyframes animationCta {
+    0%{
+        max-width: 200px;
+        transform: scaleX(.95);
+        font-size: 1.2rem;
+    }
+    50%{
+        max-width: 400px;
+        transform: scaleX(1);
+        font-size: 1.4rem; 
+    }
+    100%{
+        max-width: 200px;
+        transform: scaleX(.95);
+        font-size: 1.2rem;
     }
 }
